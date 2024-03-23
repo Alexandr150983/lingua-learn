@@ -17,7 +17,7 @@ export const LogoText = styled.span`
   line-height: 1.25;
   color: var(--black);
 `;
-export const StyledLink = styled(Link)`
+export const LoginLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
