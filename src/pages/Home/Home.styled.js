@@ -30,18 +30,25 @@ export const HomeImg = styled.div`
   background: #fbe9ba;
 `;
 
-export const Title = styled.h1`
+export const TitleAdvantages = styled.h1`
   margin-bottom: 32px;
   font-weight: 500;
   font-size: 48px;
   line-height: 1.17;
   letter-spacing: -0.02em;
   color: var(--black);
+`;
+export const Language = styled.span`
+  margin-right: 5px;
   font-style: italic;
   font-weight: 400;
+  border-radius: 8px;
+  width: 195px;
+  height: 40px;
+  background: var(--third-gold);
 `;
 
-export const Text = styled.p`
+export const TextAdvantages = styled.p`
   margin-bottom: 64px;
   padding-right: 87px;
   font-weight: 400;
@@ -63,8 +70,37 @@ export const GetStart = styled.button`
   color: var(--black);
 `;
 export const Tutors = styled.div`
+  display: flex;
+  justify-content: center;
   border: 1.5px dashed var(--gold);
   border-radius: 30px;
   width: 1312px;
   height: 116px;
+`;
+export const ListItems = styled.ul`
+  display: flex;
+  gap: 100px;
+`;
+
+export const Item = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const TitleItem = styled.h2`
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--black);
+`;
+
+export const TextItem = styled.p`
+  max-width: 74px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--color-text-third);
 `;

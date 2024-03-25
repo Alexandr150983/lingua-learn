@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import "firebase/database";
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDzE0Df4gpab61yKoXo_HA84O_kJ-PWj74",
@@ -13,17 +13,7 @@ const firebaseConfig = {
   measurementId: "G-G1CL6Y3SH9",
 };
 
-// Ініціалізація Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// Отримання посилання на базу даних
-const database = firebase.database();
-
-// Приклад читання даних з Firebase
-try {
-  const snapshot = await database.ref().once("value");
-  const teachers = snapshot.val();
-  console.log(teachers);
-} catch (error) {
-  console.error("Error fetching data:", error);
-}
+export default database;
