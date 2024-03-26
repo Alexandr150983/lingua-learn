@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const TeachersContainer = styled.section`
-  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  padding: 96px 128px;
+  background: var(--second-white);
 `;
 
 export const Filter = styled.form`
   display: flex;
   gap: 20px;
-  padding-left: 128px;
-  padding-top: 96px;
+  margin-bottom: 32px;
 `;
 
 export const FilterLanguage = styled.div`
@@ -70,13 +72,19 @@ export const PriceInput = styled.input`
   color: var(--black);
 `;
 
-export const TeacherCard = styled.div``;
-
-export const TeacherCardList = styled.ul``;
+export const TeacherCardList = styled.ul`
+  padding: 0;
+`;
 
 export const TeacherItem = styled.li`
   display: flex;
   gap: 48px;
+  margin-bottom: 32px;
+  border-radius: 24px;
+  padding: 24px;
+  width: 1184px;
+  height: 328px;
+  background-color: var(--white);
 `;
 
 export const Avatar = styled.div`
@@ -104,18 +112,37 @@ export const SvgStatus = styled.img`
 
 export const InfoTeacherContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 968px;
   height: 280px;
 `;
 
-export const CardInfo = styled.div``;
+export const CardInfo = styled.div`
+  display: flex;
+  width: 968px;
+  height: 216px;
+  margin-bottom: 32px;
+`;
 
 export const LevelInfoList = styled.ul`
   display: flex;
 `;
 
 export const LevelInfoItem = styled.li`
-  border: 1px solid var(-color-text-second);
+  display: flex;
+  border: 1px solid var(--color-text-second);
   border-radius: 35px;
   padding: 8px 12px;
+  height: 32px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--black);
+
+  &:first-of-type,
+  &:active {
+    background: var(--gold);
+  }
 `;

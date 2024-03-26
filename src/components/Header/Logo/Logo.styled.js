@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  
+  width: 9%;
 `;
 export const LogoText = styled.span`
   margin-left: 8px;

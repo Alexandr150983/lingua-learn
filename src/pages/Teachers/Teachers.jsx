@@ -15,34 +15,24 @@ import {
   LevelInput,
   PriceInput,
   SvgStatus,
-  TeacherCard,
   TeacherCardList,
   TeacherItem,
   TeachersContainer,
 } from "./Teachers.styled";
-import database from "../../services/firebase";
-import { get, ref } from "firebase/database";
+
 import SvgStatusAvatar from "../../assets/images/Icons/status.svg";
+import fetchTeachersData from "../../services/databaseService";
 
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
 
   useEffect(() => {
-    const databaseRef = ref(database, "/");
-
-    get(databaseRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          setTeachersData(data);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error("Error getting data", error);
-      });
+    const fetchData = async () => {
+      const data = await fetchTeachersData();
+      console.log(data);
+      setTeachersData(data);
+    };
+    fetchData();
   }, []);
 
   return (
@@ -61,28 +51,26 @@ const Teachers = () => {
           <PriceInput></PriceInput>
         </FilterPrice>
       </Filter>
-      <TeacherCard>
-        <TeacherCardList>
-          {teachersData &&
-            Object.values(teachersData).map((teacher, index) => (
-              <TeacherItem key={index}>
-                <Avatar>
-                  <AvatarImg src={teacher.avatar_url} alt="Teacher avatar" />
-                  <SvgStatus
-                    src={SvgStatusAvatar}
-                    alt="Teacher status avatar"
-                  />
-                </Avatar>
-                <InfoTeacherContainer>
-                  <CardInfo></CardInfo>
-                  <LevelInfoList>
-                    <LevelInfoItem>{teacher.levels}</LevelInfoItem>
-                  </LevelInfoList>
-                </InfoTeacherContainer>
-              </TeacherItem>
-            ))}
-        </TeacherCardList>
-      </TeacherCard>
+      <TeacherCardList>
+        {teachersData &&
+          Object.values(teachersData).map((teacher, index) => (
+            <TeacherItem key={index}>
+              <Avatar>
+                <AvatarImg src={teacher.avatar_url} alt="Teacher avatar" />
+                <SvgStatus src={SvgStatusAvatar} alt="Teacher status avatar" />
+              </Avatar>
+              <InfoTeacherContainer>
+                <CardInfo></CardInfo>
+                <LevelInfoList>
+                  {teacher.levels &&
+                    Object.values(teacher.levels).map((level, index) => (
+                      <LevelInfoItem key={index}>#{level}</LevelInfoItem>
+                    ))}
+                </LevelInfoList>
+              </InfoTeacherContainer>
+            </TeacherItem>
+          ))}
+      </TeacherCardList>
     </TeachersContainer>
   );
 };
