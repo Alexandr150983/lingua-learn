@@ -77,6 +77,7 @@ export const TeacherCardList = styled.ul`
 `;
 
 export const TeacherItem = styled.li`
+  position: relative;
   display: flex;
   gap: 48px;
   margin-bottom: 32px;
@@ -87,6 +88,13 @@ export const TeacherItem = styled.li`
   background-color: var(--white);
 `;
 
+export const HeartSvg = styled.img`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  transform: translate(50%, -50%);
+  cursor: pointer;
+`;
 export const Avatar = styled.div`
   position: relative;
   display: flex;
@@ -119,9 +127,104 @@ export const InfoTeacherContainer = styled.div`
 
 export const CardInfo = styled.div`
   display: flex;
+  flex-direction: column;
   width: 968px;
   height: 216px;
   margin-bottom: 32px;
+`;
+
+export const TitleCardContainer = styled.div`
+  display: flex;
+  margin-bottom: 32px;
+  align-items: flex-start;
+`;
+
+export const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TitleCardText = styled.p`
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-fourth);
+`;
+
+export const TitleCardTitle = styled.h2`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+`;
+
+export const BookSvg = styled.img``;
+
+export const PipeImg = styled.img``;
+
+export const StarSvg = styled.img``;
+
+export const TitleInfoList = styled.ul`
+  display: flex;
+  gap: 16px;
+`;
+
+export const LessonsOnline = styled.li`
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
+
+export const LessonsDone = styled.li`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
+
+export const Rating = styled.li`
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
+export const Price = styled.li`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
+
+export const PriceSpan = styled.span`
+  color: var(--color-text-five);
+`;
+
+export const InfoTeacher = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const Conditions = styled.p``;
+
+export const LessonInfo = styled.p``;
+
+export const Speaks = styled.p``;
+
+export const ReadMore = styled.a`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--black);
+  cursor: pointer;
 `;
 
 export const LevelInfoList = styled.ul`
