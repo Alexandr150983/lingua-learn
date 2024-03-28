@@ -7,72 +7,10 @@ export const TeachersContainer = styled.section`
   background: var(--second-white);
 `;
 
-export const Filter = styled.form`
-  display: flex;
-  gap: 20px;
-  margin-bottom: 32px;
-`;
-
-export const FilterLanguage = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 221px;
-`;
-
-export const FilterLabel = styled.label`
-  margin-bottom: 8px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
-  color: var(--color-text-fourth);
-`;
-
-export const LanguageInput = styled.input`
-  border-radius: 14px;
-  padding: 16px 148px 16px 18px;
-  max-width: 221px;
-  background: var(--white);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11;
-  color: var(--black);
-`;
-
-export const FilterLevel = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 198px;
-`;
-
-export const LevelInput = styled.input`
-  border-radius: 14px;
-  padding: 14px 81px 14px 18px;
-  max-width: 198px;
-  background: var(--white);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11;
-  color: var(--black);
-`;
-
-export const FilterPrice = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 124px;
-`;
-
-export const PriceInput = styled.input`
-  border-radius: 14px;
-  padding: 14px 18px;
-  max-width: 124px;
-  background: var(--white);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11;
-  color: var(--black);
-`;
-
 export const TeacherCardList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
 `;
 
@@ -84,7 +22,7 @@ export const TeacherItem = styled.li`
   border-radius: 24px;
   padding: 24px;
   width: 1184px;
-  height: 328px;
+  /* max-height: 328px; */
   background-color: var(--white);
 `;
 
@@ -109,7 +47,7 @@ export const Avatar = styled.div`
 export const AvatarImg = styled.img`
   border-radius: 100px;
   width: 96px;
-  height: 96px;
+  /* height: 96px; */
 `;
 
 export const SvgStatus = styled.img`
@@ -122,14 +60,14 @@ export const InfoTeacherContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 968px;
-  height: 280px;
+  /* height: 280px; */
 `;
 
 export const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 968px;
-  height: 216px;
+  /* height: 216px; */
   margin-bottom: 32px;
 `;
 
@@ -207,24 +145,55 @@ export const PriceSpan = styled.span`
 
 export const InfoTeacher = styled.div`
   display: flex;
+  /* justify-content: flex-start; */
   flex-direction: column;
   gap: 8px;
 `;
 
-export const Conditions = styled.p``;
+export const InfoSpan = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
 
-export const LessonInfo = styled.p``;
+export const Conditions = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: none;
+  color: var(--color-text-fourth);
+`;
 
-export const Speaks = styled.p``;
+export const LessonInfo = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: none;
+  color: var(--color-text-fourth);
+`;
 
-export const ReadMore = styled.a`
+export const Speaks = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: none;
+  color: var(--color-text-fourth);
+`;
+export const InfoSpanUnderline = styled.span`
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--black);
+`;
+
+export const ReadMore = styled.button`
+  text-align: left;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: var(--black);
-  cursor: pointer;
 `;
 
 export const LevelInfoList = styled.ul`
@@ -248,4 +217,16 @@ export const LevelInfoItem = styled.li`
   &:active {
     background: var(--gold);
   }
+`;
+
+export const LoadMoreButton = styled.button`
+  border-radius: 12px;
+  padding: 16px 48px;
+  max-width: 183px;
+  max-height: 60px;
+  background: var(--gold);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--black);
 `;

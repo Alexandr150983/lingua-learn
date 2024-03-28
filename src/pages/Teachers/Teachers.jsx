@@ -5,24 +5,19 @@ import {
   BookSvg,
   CardInfo,
   Conditions,
-  Filter,
-  FilterLabel,
-  FilterLanguage,
-  FilterLevel,
-  FilterPrice,
   HeartSvg,
+  InfoSpan,
+  InfoSpanUnderline,
   InfoTeacher,
   InfoTeacherContainer,
-  LanguageInput,
   LessonInfo,
   LessonsDone,
   LessonsOnline,
   LevelInfoItem,
   LevelInfoList,
-  LevelInput,
+  LoadMoreButton,
   PipeImg,
   Price,
-  PriceInput,
   PriceSpan,
   Rating,
   ReadMore,
@@ -45,9 +40,20 @@ import Pipe from "../../assets/images/Icons/pipe.svg";
 import Star from "../../assets/images/Icons/Star.svg";
 import Heart from "../../assets/images/Icons/heart-normal.svg";
 import fetchTeachersData from "../../services/databaseService";
+import FilterTicher from "../../components/FilterTicher/FilterTicher";
 
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
+
+  const showMoreTogle = () => {
+    setShowMoreInfo((prevState) => !prevState);
+  };
+
+  const showMoreCards = () => {
+    setVisibleCards((prevVisibleCards) => prevVisibleCards + 3);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +66,8 @@ const Teachers = () => {
 
   return (
     <TeachersContainer>
-      <Filter>
+      <FilterTicher />
+      {/* <Filter>
         <FilterLanguage>
           <FilterLabel>Languages</FilterLabel>
           <LanguageInput></LanguageInput>
@@ -73,10 +80,10 @@ const Teachers = () => {
           <FilterLabel>Price</FilterLabel>
           <PriceInput></PriceInput>
         </FilterPrice>
-      </Filter>
+      </Filter> */}
       <TeacherCardList>
         {teachersData &&
-          Object.values(teachersData).map((teacher, index) => (
+          teachersData.slice(0, visibleCards).map((teacher, index) => (
             <TeacherItem key={index}>
               <HeartSvg src={Heart} alt="Heart" />
               <Avatar>
@@ -108,27 +115,39 @@ const Teachers = () => {
                       </Rating>
                       <PipeImg src={Pipe} alt="Pipe" />
                       <Price>
-                        Price / 1 hour:{" "}
+                        Price / 1 hour:
                         <PriceSpan>{teacher.price_per_hour}$</PriceSpan>
                       </Price>
                     </TitleInfoList>
                   </TitleCardContainer>
                   <InfoTeacher>
-                    <Speaks>Speaks: {teacher.languages}</Speaks>
-                    <LessonInfo>Lesson Info: {teacher.lesson_info}</LessonInfo>
-                    <Conditions>Conditions: {teacher.conditions}</Conditions>
-                    <ReadMore>Read more</ReadMore>
+                    <Speaks>
+                      Speaks:{" "}
+                      <InfoSpanUnderline>
+                        {teacher.languages.join(", ")}
+                      </InfoSpanUnderline>
+                    </Speaks>
+                    <LessonInfo>
+                      Lesson Info: <InfoSpan> {teacher.lesson_info}</InfoSpan>
+                    </LessonInfo>
+                    <Conditions>
+                      Conditions: <InfoSpan> {teacher.conditions}</InfoSpan>
+                    </Conditions>
+                    {showMoreInfo ? <div>123</div> : null}
+                    <ReadMore onClick={showMoreTogle}>Read more</ReadMore>
                   </InfoTeacher>
                 </CardInfo>
                 <LevelInfoList>
-                  {teacher.levels &&
-                    Object.values(teacher.levels).map((level, index) => (
-                      <LevelInfoItem key={index}>#{level}</LevelInfoItem>
-                    ))}
+                  {teacher.levels.map((level, index) => (
+                    <LevelInfoItem key={index}>#{level}</LevelInfoItem>
+                  ))}
                 </LevelInfoList>
               </InfoTeacherContainer>
             </TeacherItem>
           ))}
+        {visibleCards < (teachersData && teachersData.length) && (
+          <LoadMoreButton onClick={showMoreCards}>Load more</LoadMoreButton>
+        )}
       </TeacherCardList>
     </TeachersContainer>
   );
