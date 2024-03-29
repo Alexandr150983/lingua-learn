@@ -194,10 +194,14 @@ export const ReadMore = styled.button`
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: var(--black);
+  width: 90px;
+  background-color: transparent;
 `;
 
 export const LevelInfoList = styled.ul`
   display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
 `;
 
 export const LevelInfoItem = styled.li`
@@ -224,6 +228,58 @@ export const LoadMoreButton = styled.button`
   padding: 16px 48px;
   max-width: 183px;
   max-height: 60px;
+  background: var(--gold);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--black);
+`;
+
+export const Expirience = styled.p`
+  margin-bottom: 32px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--black);
+`;
+
+export const ShowMoreInfoContainer = styled.div``;
+
+export const ReviewsList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0;
+`;
+
+export const ReviewsItem = styled.li``;
+
+export const Reviewer = styled.h3`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-fourth);
+`;
+
+export const ReviewerRating = styled.div`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--black);
+`;
+
+export const ReviewerText = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;
+
+export const BookTrialLessonButton = styled.button`
+  border-radius: 12px;
+  padding: 16px 48px;
+  max-width: 232px;
+  height: 60px;
   background: var(--gold);
   font-weight: 700;
   font-size: 18px;

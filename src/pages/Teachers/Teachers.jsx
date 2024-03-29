@@ -3,8 +3,10 @@ import {
   Avatar,
   AvatarImg,
   BookSvg,
+  BookTrialLessonButton,
   CardInfo,
   Conditions,
+  Expirience,
   HeartSvg,
   InfoSpan,
   InfoSpanUnderline,
@@ -21,6 +23,12 @@ import {
   PriceSpan,
   Rating,
   ReadMore,
+  Reviewer,
+  ReviewerRating,
+  ReviewerText,
+  ReviewsItem,
+  ReviewsList,
+  ShowMoreInfoContainer,
   Speaks,
   StarSvg,
   SvgStatus,
@@ -45,10 +53,13 @@ import FilterTicher from "../../components/FilterTicher/FilterTicher";
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
   const [visibleCards, setVisibleCards] = useState(3);
-  const [showMoreInfo, setShowMoreInfo] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState({});
 
-  const showMoreTogle = () => {
-    setShowMoreInfo((prevState) => !prevState);
+  const showMoreTogle = (index) => {
+    setShowMoreInfo((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
   };
 
   const showMoreCards = () => {
@@ -133,8 +144,32 @@ const Teachers = () => {
                     <Conditions>
                       Conditions: <InfoSpan> {teacher.conditions}</InfoSpan>
                     </Conditions>
-                    {showMoreInfo ? <div>123</div> : null}
-                    <ReadMore onClick={showMoreTogle}>Read more</ReadMore>
+                    {showMoreInfo[index] && (
+                      <ShowMoreInfoContainer>
+                        <Expirience>{teacher.experience}</Expirience>
+                        <ReviewsList>
+                          {teacher.reviews.map((review, index) => (
+                            <ReviewsItem key={index}>
+                              <Reviewer>{review.reviewer_name}</Reviewer>
+                              <ReviewerRating>
+                                <StarSvg src={Star} alt="Star" />
+                                {review.reviewer_rating}
+                              </ReviewerRating>
+                              <ReviewerText>{review.comment}</ReviewerText>
+                            </ReviewsItem>
+                          ))}
+                        </ReviewsList>
+                      </ShowMoreInfoContainer>
+                    )}
+                    {!showMoreInfo[index] && (
+                      <ReadMore
+                        onClick={() => {
+                          showMoreTogle(index);
+                        }}
+                      >
+                        Read more
+                      </ReadMore>
+                    )}
                   </InfoTeacher>
                 </CardInfo>
                 <LevelInfoList>
@@ -142,6 +177,11 @@ const Teachers = () => {
                     <LevelInfoItem key={index}>#{level}</LevelInfoItem>
                   ))}
                 </LevelInfoList>
+                {showMoreInfo[index] && (
+                  <BookTrialLessonButton>
+                    Book trial lesson
+                  </BookTrialLessonButton>
+                )}
               </InfoTeacherContainer>
             </TeacherItem>
           ))}
