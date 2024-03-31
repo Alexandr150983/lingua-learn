@@ -49,6 +49,7 @@ import Star from "../../assets/images/Icons/Star.svg";
 import Heart from "../../assets/images/Icons/heart-normal.svg";
 import fetchTeachersData from "../../services/databaseService";
 import FilterTicher from "../../components/FilterTicher/FilterTicher";
+import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
 
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
@@ -189,6 +190,7 @@ const Teachers = () => {
           <LoadMoreButton onClick={showMoreCards}>Load more</LoadMoreButton>
         )}
       </TeacherCardList>
+      <PopUpBookTrialLesson />
     </TeachersContainer>
   );
 };
