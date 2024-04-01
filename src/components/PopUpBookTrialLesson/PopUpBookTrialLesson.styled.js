@@ -11,7 +11,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--second-white);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const PopUpBookTrialLessonContainer = styled.div`
@@ -37,13 +37,18 @@ export const PopUpBookTrialLessonTitle = styled.h2`
 `;
 
 export const PopUpBookTrialLessonText = styled.p`
+  margin-bottom: 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.37;
   color: var(--color-text-third);
 `;
 
-export const Teacher = styled.div``;
+export const TeacherContainer = styled.div`
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+`;
 
 export const LessonTitle = styled.h3`
   margin-bottom: 20px;
@@ -57,14 +62,15 @@ export const RadioButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.37;
-  color: var(--black);
   margin-bottom: 40px;
 `;
 
-export const FormContainer = styled.div``;
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+`;
 
 export const BookButton = styled.button`
   border-radius: 12px;
@@ -84,4 +90,64 @@ export const CloseSvg = styled.img`
   right: 20px;
   cursor: pointer;
 `;
-export const AvatarImg = styled.img``;
+export const AvatarImg = styled.img`
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+`;
+
+export const Teacher = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RadioLabel = styled.label`
+  display: flex;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--black);
+`;
+
+export const RadioInput = styled.input`
+  display: none;
+`;
+
+export const RadioSelected = styled.img`
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+`;
+
+export const RadioUnselected = styled.img`
+  border-radius: 10px;
+  width: 24px;
+  height: 24px;
+`;
+
+export const FormInput = styled.input`
+  border: 1px solid var(--color-text-second);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 472px;
+  max-height: 54px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--black);
+`;
+
+export const TeacherText = styled.p`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--color-text-fourth);
+`;
+
+export const TeacherTitle = styled.h4`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`;

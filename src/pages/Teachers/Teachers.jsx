@@ -55,6 +55,12 @@ const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
   const [visibleCards, setVisibleCards] = useState(3);
   const [showMoreInfo, setShowMoreInfo] = useState({});
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState(null);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
   const showMoreTogle = (index) => {
     setShowMoreInfo((prevState) => ({
@@ -65,6 +71,10 @@ const Teachers = () => {
 
   const showMoreCards = () => {
     setVisibleCards((prevVisibleCards) => prevVisibleCards + 3);
+  };
+
+  const handleTeacherClick = (teacher) => {
+    setSelectedTeacher(teacher);
   };
 
   useEffect(() => {
@@ -96,7 +106,10 @@ const Teachers = () => {
       <TeacherCardList>
         {teachersData &&
           teachersData.slice(0, visibleCards).map((teacher, index) => (
-            <TeacherItem key={index}>
+            <TeacherItem
+              key={index}
+              onClick={() => handleTeacherClick(teacher)}
+            >
               <HeartSvg src={Heart} alt="Heart" />
               <Avatar>
                 <AvatarImg src={teacher.avatar_url} alt="Teacher avatar" />
@@ -179,7 +192,12 @@ const Teachers = () => {
                   ))}
                 </LevelInfoList>
                 {showMoreInfo[index] && (
-                  <BookTrialLessonButton>
+                  <BookTrialLessonButton
+                    onClick={() => {
+                      setSelectedTeacher(teacher);
+                      setIsPopupOpen(true);
+                    }}
+                  >
                     Book trial lesson
                   </BookTrialLessonButton>
                 )}
@@ -190,7 +208,15 @@ const Teachers = () => {
           <LoadMoreButton onClick={showMoreCards}>Load more</LoadMoreButton>
         )}
       </TeacherCardList>
-      <PopUpBookTrialLesson />
+      {isPopupOpen && selectedTeacher && (
+        <PopUpBookTrialLesson
+          isOpen={isPopupOpen}
+          onClose={togglePopup}
+          teacherAvatar={selectedTeacher.avatar_url}
+          teacherName={selectedTeacher.name}
+          teacherSurname={selectedTeacher.surname}
+        />
+      )}
     </TeachersContainer>
   );
 };
