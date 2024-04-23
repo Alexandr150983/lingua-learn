@@ -1,19 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+// import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDzE0Df4gpab61yKoXo_HA84O_kJ-PWj74",
-  authDomain: "lingualearn-a0cbf.firebaseapp.com",
-  databaseURL:
-    "https://lingualearn-a0cbf-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "lingualearn-a0cbf",
-  storageBucket: "lingualearn-a0cbf.appspot.com",
-  messagingSenderId: "365241946270",
-  appId: "1:365241946270:web:62f73885daddb1cea76b8f",
-  measurementId: "G-G1CL6Y3SH9",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATA_BASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKED,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_SD,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+// const auth = getAuth(app);
 
 export default database;

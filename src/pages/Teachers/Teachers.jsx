@@ -53,7 +53,7 @@ import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBoo
 
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
-  const [visibleCards, setVisibleCards] = useState(3);
+  const [visibleCards, setVisibleCards] = useState(4);
   const [showMoreInfo, setShowMoreInfo] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -70,7 +70,7 @@ const Teachers = () => {
   };
 
   const showMoreCards = () => {
-    setVisibleCards((prevVisibleCards) => prevVisibleCards + 3);
+    setVisibleCards((prevVisibleCards) => prevVisibleCards + 4);
   };
 
   const handleTeacherClick = (teacher) => {

@@ -10,13 +10,14 @@ export const StyledHeader = styled.div`
   margin: 20px 128px;
 `;
 
-export const LogoText = styled.span`
+export const LoginText = styled.span`
   margin-left: 8px;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.25;
   color: var(--black);
 `;
+
 export const LoginLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -39,7 +40,7 @@ export const RegisterButton = styled.button`
   color: var(--white);
 `;
 
-export const HederLinkContainer = styled.div`
+export const HederLinkContainer = styled.nav`
   display: flex;
   gap: 28px;
 `;

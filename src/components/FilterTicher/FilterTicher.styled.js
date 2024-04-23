@@ -29,6 +29,7 @@ export const LanguageInput = styled.input`
   font-size: 18px;
   line-height: 1.11;
   color: var(--black);
+  outline: none;
 `;
 
 export const FilterLevel = styled.div`
@@ -46,6 +47,7 @@ export const LevelInput = styled.input`
   font-size: 18px;
   line-height: 1.11;
   color: var(--black);
+  outline: none;
 `;
 
 export const FilterPrice = styled.div`
@@ -63,4 +65,5 @@ export const PriceInput = styled.input`
   font-size: 18px;
   line-height: 1.11;
   color: var(--black);
+  outline: none;
 `;

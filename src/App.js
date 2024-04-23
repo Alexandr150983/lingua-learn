@@ -1,16 +1,17 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import "./App.css";
 import Layout from "./components/Layout/Layout";
-import Loader from "./components/Loader/Loader";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Teachers from "./pages/Teachers/Teachers";
-import Favorites from "./pages/Favorites/Favorites";
 import {
   FAVORITES_ROUTE,
   HOME_ROUTE,
   TEACHERS_ROUTE,
 } from "./constants/routes";
+import Loader from "components/Loader/Loader";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const Teachers = lazy(() => import("./pages/Teachers/Teachers"));
+const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
 
 function App() {
   return (

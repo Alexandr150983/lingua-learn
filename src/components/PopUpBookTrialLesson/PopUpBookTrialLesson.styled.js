@@ -1,32 +1,5 @@
 import styled from "styled-components";
 
-export const Backdrop = styled.div`
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
-
-export const PopUpBookTrialLessonContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 64px;
-  border-radius: 30px;
-  max-width: 599px;
-  max-height: 971px;
-  overflow: auto;
-  background-color: var(--white);
-`;
-
 export const PopUpBookTrialLessonTitle = styled.h2`
   margin-bottom: 20px;
   font-weight: 500;
@@ -74,9 +47,8 @@ export const FormContainer = styled.div`
 
 export const BookButton = styled.button`
   border-radius: 12px;
-  padding: 16px 215px;
-  width: 472px;
-  height: 60px;
+  padding: 16px;
+  max-width: 472px;
   background: var(--gold);
   font-weight: 700;
   font-size: 18px;
@@ -84,12 +56,12 @@ export const BookButton = styled.button`
   color: var(--black);
 `;
 
-export const CloseSvg = styled.img`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-`;
+// export const CloseSvg = styled.img`
+//   position: absolute;
+//   top: 20px;
+//   right: 20px;
+//   cursor: pointer;
+// `;
 export const AvatarImg = styled.img`
   border-radius: 100px;
   width: 44px;
@@ -114,18 +86,6 @@ export const RadioInput = styled.input`
   display: none;
 `;
 
-export const RadioSelected = styled.img`
-  border-radius: 12px;
-  width: 24px;
-  height: 24px;
-`;
-
-export const RadioUnselected = styled.img`
-  border-radius: 10px;
-  width: 24px;
-  height: 24px;
-`;
-
 export const FormInput = styled.input`
   border: 1px solid var(--color-text-second);
   border-radius: 12px;
@@ -136,6 +96,7 @@ export const FormInput = styled.input`
   font-size: 16px;
   line-height: 1.37;
   color: var(--black);
+  outline: none;
 `;
 
 export const TeacherText = styled.p`
