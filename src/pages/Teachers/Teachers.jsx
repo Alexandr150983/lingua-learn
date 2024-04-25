@@ -50,6 +50,7 @@ import Heart from "../../assets/images/Icons/heart-normal.svg";
 import fetchTeachersData from "../../services/databaseService";
 import FilterTicher from "../../components/FilterTicher/FilterTicher";
 import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
+import Modal from "components/Modal/Modal";
 
 const Teachers = () => {
   const [teachersData, setTeachersData] = useState(null);
@@ -209,13 +210,13 @@ const Teachers = () => {
         )}
       </TeacherCardList>
       {isPopupOpen && selectedTeacher && (
-        <PopUpBookTrialLesson
-          isOpen={isPopupOpen}
-          onClose={togglePopup}
-          teacherAvatar={selectedTeacher.avatar_url}
-          teacherName={selectedTeacher.name}
-          teacherSurname={selectedTeacher.surname}
-        />
+        <Modal isOpen={isPopupOpen} onClose={togglePopup}>
+          <PopUpBookTrialLesson
+            teacherAvatar={selectedTeacher.avatar_url}
+            teacherName={selectedTeacher.name}
+            teacherSurname={selectedTeacher.surname}
+          />
+        </Modal>
       )}
     </TeachersContainer>
   );

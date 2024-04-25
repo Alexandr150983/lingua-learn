@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-// import { Formik } from "formik";
-
+import { Formik } from "formik";
+import * as yup from "yup";
 import {
   AvatarImg,
   BookButton,
+  ErrorMessageDiv,
   FormContainer,
-  FormInput,
+  InputContainer,
+  Label,
   LessonTitle,
   PopUpBookTrialLessonText,
   PopUpBookTrialLessonTitle,
   RadioButtonContainer,
   RadioInput,
   RadioLabel,
+  StyledField,
+  StyledForm,
   Teacher,
   TeacherContainer,
   TeacherText,
@@ -20,38 +23,38 @@ import {
 import RadioCheckSelected from "../../assets/images/Icons/RadioButtonCheck.svg";
 import RadioCheckUnselected from "../../assets/images/Icons/RadioButton.svg";
 import RadioButton from "../RadioButton/RadioButton";
-import Modal from "../Modal/Modal";
+
+const schema = yup.object().shape({
+  fullName: yup.string().required("Required"),
+  email: yup.string().email("Invalid email").required("Required"),
+  phoneNumber: yup
+    .string()
+    .min(10, "Too Short!")
+    .max(13, "Too Long!")
+    .required("Required"),
+});
 
 const PopUpBookTrialLesson = ({
-  isOpen,
-  onClose,
   teacherAvatar,
   teacherName,
   teacherSurname,
+  // onClose,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [fullNameValue, setFullNameValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [phoneNumberValue, setPhoneNumberValue] = useState("");
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const initialValues = {
+    reason: "",
+    fullName: "",
+    email: "",
+    phoneNumber: "",
   };
 
-  const handleFullNameChange = (event) => {
-    setFullNameValue(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmailValue(event.target.value);
-  };
-
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumberValue(event.target.value);
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    resetForm();
+    // onClose();
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <FormContainer>
       <PopUpBookTrialLessonTitle>Book trial lesson</PopUpBookTrialLessonTitle>
       <PopUpBookTrialLessonText>
         Our experienced tutor will assess your current language level, discuss
@@ -67,105 +70,112 @@ const PopUpBookTrialLesson = ({
         </Teacher>
       </TeacherContainer>
       <LessonTitle>What is your main reason for learning English?</LessonTitle>
-      <RadioButtonContainer>
-        <RadioLabel>
-          <RadioInput
-            type="radio"
-            aria-label="Career and business"
-            value="Career and business"
-            checked={selectedOption === "Career and business"}
-            onChange={handleOptionChange}
-          />
-          <RadioButton
-            selected={selectedOption === "Career and business"}
-            selectedSrc={RadioCheckSelected}
-            unselectedSrc={RadioCheckUnselected}
-          />
-          Career and business
-        </RadioLabel>
-        <RadioLabel>
-          <RadioInput
-            type="radio"
-            aria-label="Lesson for kids"
-            value="Lesson for kids"
-            checked={selectedOption === "Lesson for kids"}
-            onChange={handleOptionChange}
-          />
-          <RadioButton
-            selected={selectedOption === "Lesson for kids"}
-            selectedSrc={RadioCheckSelected}
-            unselectedSrc={RadioCheckUnselected}
-          />
-          Lesson for kids
-        </RadioLabel>
-        <RadioLabel>
-          <RadioInput
-            type="radio"
-            aria-label="Living abroad"
-            value="Living abroad"
-            checked={selectedOption === "Living abroad"}
-            onChange={handleOptionChange}
-          />
-          <RadioButton
-            selected={selectedOption === "Living abroad"}
-            selectedSrc={RadioCheckSelected}
-            unselectedSrc={RadioCheckUnselected}
-          />
-          Living abroad
-        </RadioLabel>
-        <RadioLabel>
-          <RadioInput
-            type="radio"
-            aria-label="Exams and coursework"
-            value="Exams and coursework"
-            checked={selectedOption === "Exams and coursework"}
-            onChange={handleOptionChange}
-          />
-          <RadioButton
-            selected={selectedOption === "Exams and coursework"}
-            selectedSrc={RadioCheckSelected}
-            unselectedSrc={RadioCheckUnselected}
-          />
-          Exams and coursework
-        </RadioLabel>
-        <RadioLabel>
-          <RadioInput
-            type="radio"
-            aria-label="Culture, travel or hobby"
-            value="Culture, travel or hobby"
-            checked={selectedOption === "Culture, travel or hobby"}
-            onChange={handleOptionChange}
-          />
-          <RadioButton
-            selected={selectedOption === "Culture, travel or hobby"}
-            selectedSrc={RadioCheckSelected}
-            unselectedSrc={RadioCheckUnselected}
-          />
-          Culture, travel or hobby
-        </RadioLabel>
-      </RadioButtonContainer>
-      <FormContainer>
-        <FormInput
-          type="text"
-          value={fullNameValue}
-          onChange={handleFullNameChange}
-          placeholder="Full Name"
-        />
-        <FormInput
-          type="text"
-          value={emailValue}
-          onChange={handleEmailChange}
-          placeholder="Email"
-        />
-        <FormInput
-          type="text"
-          value={phoneNumberValue}
-          onChange={handlePhoneNumberChange}
-          placeholder="Phone Number"
-        />
-      </FormContainer>
-      <BookButton type="button">Book</BookButton>
-    </Modal>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        {(formikProps) => (
+          <StyledForm autoComplete="off">
+            <RadioButtonContainer>
+              <RadioLabel>
+                <RadioInput
+                  type="radio"
+                  name="reason"
+                  value="Career and business"
+                />
+                <RadioButton
+                  selected={formikProps.values.reason === "Career and business"}
+                  selectedSrc={RadioCheckSelected}
+                  unselectedSrc={RadioCheckUnselected}
+                />
+                Career and business
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInput
+                  type="radio"
+                  value="Lesson for kids"
+                  name="reason"
+                />
+                <RadioButton
+                  selected={formikProps.values.reason === "Lesson for kids"}
+                  selectedSrc={RadioCheckSelected}
+                  unselectedSrc={RadioCheckUnselected}
+                />
+                Lesson for kids
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInput
+                  type="radio"
+                  aria-label="Living abroad"
+                  value="Living abroad"
+                  name="reason"
+                />
+                <RadioButton
+                  selected={formikProps.values.reason === "Living abroad"}
+                  selectedSrc={RadioCheckSelected}
+                  unselectedSrc={RadioCheckUnselected}
+                />
+                Living abroad
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInput
+                  type="radio"
+                  value="Exams and coursework"
+                  name="reason"
+                />
+                <RadioButton
+                  selected={
+                    formikProps.values.reason === "Exams and coursework"
+                  }
+                  selectedSrc={RadioCheckSelected}
+                  unselectedSrc={RadioCheckUnselected}
+                />
+                Exams and coursework
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInput
+                  type="radio"
+                  value="Culture, travel or hobby"
+                  name="reason"
+                />
+                <RadioButton
+                  selected={
+                    formikProps.values.reason === "Culture, travel or hobby"
+                  }
+                  selectedSrc={RadioCheckSelected}
+                  unselectedSrc={RadioCheckUnselected}
+                />
+                Culture, travel or hobby
+              </RadioLabel>
+            </RadioButtonContainer>
+            <InputContainer>
+              <Label htmlFor="fullName">
+                <StyledField
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                />
+              </Label>
+              <ErrorMessageDiv name="fullName" component="div" />
+              <Label htmlFor="email">
+                <StyledField type="text" name="email" placeholder="Email" />
+              </Label>
+              <ErrorMessageDiv name="email" component="div" />
+              <Label htmlFor="phoneNumber">
+                <StyledField
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                />
+              </Label>
+              <ErrorMessageDiv name="phoneNumber" component="div" />
+            </InputContainer>
+            <BookButton type="submit">Book</BookButton>
+          </StyledForm>
+        )}
+      </Formik>
+    </FormContainer>
   );
 };
 

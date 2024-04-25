@@ -1,3 +1,4 @@
+import { ErrorMessage, Field, Form } from "formik";
 import styled from "styled-components";
 
 export const PopUpBookTrialLessonTitle = styled.h2`
@@ -31,6 +32,34 @@ export const LessonTitle = styled.h3`
   color: var(--black);
 `;
 
+export const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+export const StyledField = styled(Field)`
+  flex: 1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--black);
+  outline: none;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--color-text-second);
+  border-radius: 12px;
+  padding: 16px 18px;
+`;
+
+export const ErrorMessageDiv = styled(ErrorMessage)`
+  color: var(--toastify-color-error);
+  padding-left: 16px;
+`;
+
 export const RadioButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,17 +67,23 @@ export const RadioButtonContainer = styled.div`
   margin-bottom: 40px;
 `;
 
-export const FormContainer = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
   margin-bottom: 40px;
 `;
 
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background: var(--white);
+`;
+
 export const BookButton = styled.button`
   border-radius: 12px;
   padding: 16px;
-  max-width: 472px;
   background: var(--gold);
   font-weight: 700;
   font-size: 18px;
@@ -56,12 +91,6 @@ export const BookButton = styled.button`
   color: var(--black);
 `;
 
-// export const CloseSvg = styled.img`
-//   position: absolute;
-//   top: 20px;
-//   right: 20px;
-//   cursor: pointer;
-// `;
 export const AvatarImg = styled.img`
   border-radius: 100px;
   width: 44px;
@@ -82,7 +111,7 @@ export const RadioLabel = styled.label`
   color: var(--black);
 `;
 
-export const RadioInput = styled.input`
+export const RadioInput = styled(Field)`
   display: none;
 `;
 
@@ -90,8 +119,6 @@ export const FormInput = styled.input`
   border: 1px solid var(--color-text-second);
   border-radius: 12px;
   padding: 16px;
-  max-width: 472px;
-  max-height: 54px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.37;

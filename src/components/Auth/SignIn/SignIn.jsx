@@ -1,6 +1,9 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import eyeOffSvg from "../../../assets/images/Icons/eye-off.svg";
+import eyeOffSvg from "assets/images/Icons/eye-off.svg";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/Auth/authSlice";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
   ErrorMessageDiv,
   FormContainer,
@@ -13,18 +16,39 @@ import {
 } from "./SignIn.styled";
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(6).max(16).required(),
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup
+    .string()
+    .min(6, "Too Short!")
+    .max(16, "Too Long!")
+    .required("Required"),
 });
 
-const initialValues = {
-  email: "",
-  password: "",
-};
+const SignInForm = ({ onClose }, emmail, password) => {
+  const dispatch = useDispatch();
 
-const SignInForm = ({ onClose }) => {
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { email, password } = values;
+
+    const auth = getAuth();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.accessToken,
+          })
+        );
+      })
+      .catch(() => alert("Invalid user!"));
     resetForm();
     onClose();
   };
