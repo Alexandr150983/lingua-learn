@@ -4,6 +4,7 @@ import eyeOffSvg from "assets/images/Icons/eye-off.svg";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/Auth/authSlice";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import {
   ErrorMessageDiv,
   FormContainer,
@@ -14,6 +15,7 @@ import {
   Text,
   Title,
 } from "./SignIn.styled";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),
@@ -24,8 +26,9 @@ const schema = yup.object().shape({
     .required("Required"),
 });
 
-const SignInForm = ({ onClose }, emmail, password) => {
+const SignInForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const initialValues = {
     email: "",
@@ -47,10 +50,12 @@ const SignInForm = ({ onClose }, emmail, password) => {
             token: user.accessToken,
           })
         );
+        onClose();
       })
-      .catch(() => alert("Invalid user!"));
+      .catch((error) => {
+        setErrorMessage("Invalid user!"); // Встановлення повідомлення про помилку
+      });
     resetForm();
-    onClose();
   };
 
   return (
@@ -81,6 +86,7 @@ const SignInForm = ({ onClose }, emmail, password) => {
             </span>
           </Label>
           <ErrorMessageDiv name="password" component="div" />
+          {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
           <LogInButton type="submit">Log in</LogInButton>
         </StyledForm>
       </Formik>

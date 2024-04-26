@@ -1,3 +1,7 @@
+import { useDispatch } from "react-redux";
+import { useAuth } from "../../hooks/useAuth";
+import { removeUser } from "../../redux/Auth/authSlice";
+
 import {
   FAVORITES_ROUTE,
   HOME_ROUTE,
@@ -24,6 +28,9 @@ const Header = () => {
   const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
   const [isModalOpenRegister, setIsModalOpenRegister] = useState(false);
 
+  const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+
   const openModalLogin = () => {
     setIsModalOpenLogin(true);
   };
@@ -49,13 +56,25 @@ const Header = () => {
         <HeaderLink to={FAVORITES_ROUTE}>Favorites</HeaderLink>
       </HederLinkContainer>
       <AuthContainer>
-        <LoginLink onClick={openModalLogin}>
-          <img src={loginIcon} alt="Log in" />
-          <LoginText>Log in</LoginText>
-        </LoginLink>
-        <RegisterButton onClick={openModalRegister}>
-          Registration
-        </RegisterButton>
+        {!isAuth ? (
+          <>
+            <LoginLink onClick={openModalLogin}>
+              <img src={loginIcon} alt="Log in" />
+              <LoginText>Log in</LoginText>
+            </LoginLink>
+            <RegisterButton onClick={openModalRegister}>
+              Registration
+            </RegisterButton>
+          </>
+        ) : (
+          <RegisterButton
+            onClick={() => {
+              dispatch(removeUser());
+            }}
+          >
+            Log out
+          </RegisterButton>
+        )}
       </AuthContainer>
       <Modal isOpen={isModalOpenLogin} onClose={closeModalLogin}>
         <SignInForm onClose={closeModalLogin} />

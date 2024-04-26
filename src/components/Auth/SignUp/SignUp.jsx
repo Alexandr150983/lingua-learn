@@ -4,6 +4,8 @@ import eyeOffSvg from "assets/images/Icons/eye-off.svg";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/Auth/authSlice";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   ErrorMessageDiv,
   FormContainer,
@@ -50,7 +52,9 @@ const SignUpForm = ({ onClose }) => {
           })
         );
       })
-      .catch(() => alert("Invalid user!"));
+      .catch(() => {
+        toast.error("Invalid user!");
+      });
     resetForm();
     onClose();
   };
