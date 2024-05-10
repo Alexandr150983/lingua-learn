@@ -4,8 +4,7 @@ import eyeOffSvg from "assets/images/Icons/eye-off.svg";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/Auth/authSlice";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import {
   ErrorMessageDiv,
   FormContainer,
@@ -16,6 +15,7 @@ import {
   Text,
   Title,
 } from "./SignUp.styled";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Required"),
@@ -29,6 +29,7 @@ const schema = yup.object().shape({
 
 const SignUpForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const initialValues = {
     name: "",
@@ -52,8 +53,8 @@ const SignUpForm = ({ onClose }) => {
           })
         );
       })
-      .catch(() => {
-        toast.error("Invalid user!");
+      .catch((error) => {
+        setErrorMessage("Invalid user!");
       });
     resetForm();
     onClose();
@@ -91,6 +92,7 @@ const SignUpForm = ({ onClose }) => {
             </span>
           </Label>
           <ErrorMessageDiv name="password" component="div" />
+          {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
           <SignUpButton type="submit">Sign Up</SignUpButton>
         </StyledForm>
       </Formik>

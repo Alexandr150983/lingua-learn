@@ -37,14 +37,14 @@ export const Avatar = styled.div`
   justify-content: center;
   border: 3px solid var(--third-gold);
   border-radius: 100px;
-  width: 120px;
+  min-width: 120px;
   height: 120px;
   background: var(--white);
 `;
 export const AvatarImg = styled.img`
   border-radius: 100px;
   width: 96px;
-  /* height: 96px; */
+  height: 96px;
 `;
 
 export const SvgStatus = styled.img`

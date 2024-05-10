@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const TeachersContainer = styled.section`
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   padding: 96px 128px;
   background: var(--second-white);
@@ -12,7 +11,6 @@ export const TeacherCardList = styled.ul`
   display: flex;
   gap: 32px;
   flex-direction: column;
-  align-items: center;
   padding: 0;
 `;
 

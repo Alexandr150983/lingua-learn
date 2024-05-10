@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   TeachersContainer,
   TeacherCardList,
   LoadMoreButton,
 } from "./Teachers.styled";
 import TeacherItem from "../../components/TeacherItem/TeacherItem";
-import fetchTeachersData from "../../services/databaseService";
 import FilterTicher from "../../components/FilterTicher/FilterTicher";
 import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
 import Modal from "components/Modal/Modal";
+import { requestTeachers } from "../../redux/Teachers/teachersSlice";
 
 const Teachers = () => {
-  const [teachersData, setTeachersData] = useState(null);
   const [visibleCards, setVisibleCards] = useState(4);
   const [showMoreInfo, setShowMoreInfo] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const dispatch = useDispatch();
+  const { teachersData } = useSelector((state) => state.teachers);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -37,13 +39,8 @@ const Teachers = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchTeachersData();
-      console.log(data);
-      setTeachersData(data);
-    };
-    fetchData();
-  }, []);
+    dispatch(requestTeachers());
+  }, [dispatch]);
 
   return (
     <TeachersContainer>

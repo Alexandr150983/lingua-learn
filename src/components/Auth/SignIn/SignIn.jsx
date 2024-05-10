@@ -53,7 +53,7 @@ const SignInForm = ({ onClose }) => {
         onClose();
       })
       .catch((error) => {
-        setErrorMessage("Invalid user!"); // Встановлення повідомлення про помилку
+        setErrorMessage("Invalid user!");
       });
     resetForm();
   };
