@@ -7,7 +7,7 @@ export const StyledFavorite = styled.section`
   background: var(--second-white);
 `;
 
-export const TeacherWrapper = styled.ul`
+export const TeacherCardList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;

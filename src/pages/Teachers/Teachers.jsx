@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   TeachersContainer,
   TeacherCardList,
@@ -7,21 +7,25 @@ import {
 } from "./Teachers.styled";
 import TeacherItem from "../../components/TeacherItem/TeacherItem";
 import FilterTicher from "../../components/FilterTicher/FilterTicher";
-import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
-import Modal from "components/Modal/Modal";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { selectorTeachers } from "../../redux/Teachers/teachersSelector";
+import { selectorFavorites } from "../../redux/Favorites/favoritesSelector";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../redux/Favorites/favoritesSlice";
 import { requestTeachers } from "../../redux/Teachers/teachersSlice";
 
 const Teachers = () => {
   const [visibleCards, setVisibleCards] = useState(4);
   const [showMoreInfo, setShowMoreInfo] = useState({});
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const { teachersData, isLoading, error } = useSelector(selectorTeachers);
   const dispatch = useDispatch();
-  const { teachersData } = useSelector((state) => state.teachers);
+  const favorites = useSelector(selectorFavorites);
 
-  const togglePopup = () => {
-    setIsPopupOpen(!isPopupOpen);
-  };
+  // console.log(favorites);
+  console.log(teachersData);
 
   const showMoreTogle = (index) => {
     setShowMoreInfo((prevState) => ({
@@ -34,19 +38,31 @@ const Teachers = () => {
     setVisibleCards((prevVisibleCards) => prevVisibleCards + 4);
   };
 
-  const handleTeacherClick = (teacher) => {
-    setSelectedTeacher(teacher);
+  const handleFavoriteToggle = (teacher) => {
+    const isCurrentlyFavorite = favorites.some(
+      (favorite) => favorite.name === teacher.name
+    );
+
+    if (isCurrentlyFavorite) {
+      dispatch(removeFavorite(teacher.name));
+    } else {
+      dispatch(addFavorite(teacher));
+    }
   };
 
   useEffect(() => {
-    dispatch(requestTeachers());
-  }, [dispatch]);
+    if (!teachersData || teachersData.length === 0) {
+      dispatch(requestTeachers());
+    }
+  }, [dispatch, teachersData]);
 
   return (
     <TeachersContainer>
       <FilterTicher />
+      {isLoading && <Loader />}
+      {error && <ErrorMessage message={error} />}
       <TeacherCardList>
-        {teachersData &&
+        {teachersData !== null &&
           teachersData
             .slice(0, visibleCards)
             .map((teacher, index) => (
@@ -55,24 +71,16 @@ const Teachers = () => {
                 teacher={teacher}
                 index={index}
                 showMoreInfo={showMoreInfo}
-                handleTeacherClick={handleTeacherClick}
                 showMoreTogle={showMoreTogle}
-                setSelectedTeacher={setSelectedTeacher}
-                setIsPopupOpen={setIsPopupOpen}
+                onFavoriteToggle={handleFavoriteToggle}
+                isFavorite={favorites.some(
+                  (favorite) => favorite.name === teacher.name
+                )}
               />
             ))}
       </TeacherCardList>
       {visibleCards < (teachersData && teachersData.length) && (
         <LoadMoreButton onClick={showMoreCards}>Load more</LoadMoreButton>
-      )}
-      {isPopupOpen && selectedTeacher && (
-        <Modal isOpen={isPopupOpen} onClose={togglePopup}>
-          <PopUpBookTrialLesson
-            teacherAvatar={selectedTeacher.avatar_url}
-            teacherName={selectedTeacher.name}
-            teacherSurname={selectedTeacher.surname}
-          />
-        </Modal>
       )}
     </TeachersContainer>
   );

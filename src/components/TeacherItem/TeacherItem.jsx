@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   AvatarImg,
@@ -25,15 +25,18 @@ import {
   LessonsDone,
   LevelInfoItem,
   LevelInfoList,
-  HeartSvg,
   BookTrialLessonButton,
+  FavoriteButton,
+  HeartIconActive,
+  HeartIconNormal,
 } from "./TeacherItem.styled";
 
 import SvgStatusAvatar from "../../assets/images/Icons/status.svg";
 import BookOpen from "../../assets/images/Icons/book-open.svg";
 import PipeIcon from "../../assets/images/Icons/pipe.svg";
 import StarIcon from "../../assets/images/Icons/Star.svg";
-import HeartIcon from "../../assets/images/Icons/heart-normal.svg";
+import HeartNormal from "../../assets/images/Icons/heart-normal.svg";
+import HeartActive from "../../assets/images/Icons/heart-active.svg";
 import {
   Conditions,
   Expirience,
@@ -46,19 +49,43 @@ import {
   ReviewerText,
   TeacherItemContainer,
 } from "./TeacherItem.styled";
+import Modal from "../../components/Modal/Modal";
+import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
 
 const TeacherItem = ({
   teacher,
   index,
   showMoreInfo,
-  handleTeacherClick,
   showMoreTogle,
-  setSelectedTeacher,
-  setIsPopupOpen,
+  onFavoriteToggle,
+  isFavorite,
 }) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState(null);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
+  const handleTeacherClick = (teacher) => {
+    setSelectedTeacher(teacher);
+  };
+
   return (
     <TeacherItemContainer onClick={() => handleTeacherClick(teacher)}>
-      <HeartSvg src={HeartIcon} alt="Heart" />
+      <FavoriteButton
+        type="button"
+        onClick={(e) => {
+          onFavoriteToggle(teacher);
+        }}
+        $isFavorite={isFavorite}
+      >
+        {isFavorite ? (
+          <HeartIconActive src={HeartActive} alt="Heart icon active" />
+        ) : (
+          <HeartIconNormal src={HeartNormal} alt="Heart icon normal" />
+        )}
+      </FavoriteButton>
       <Avatar>
         <AvatarImg src={teacher.avatar_url} alt="Teacher avatar" />
         <SvgStatus src={SvgStatusAvatar} alt="Teacher status avatar" />
@@ -141,6 +168,15 @@ const TeacherItem = ({
           >
             Book trial lesson
           </BookTrialLessonButton>
+        )}
+        {isPopupOpen && selectedTeacher && (
+          <Modal isOpen={isPopupOpen} onClose={togglePopup}>
+            <PopUpBookTrialLesson
+              teacherAvatar={selectedTeacher.avatar_url}
+              teacherName={selectedTeacher.name}
+              teacherSurname={selectedTeacher.surname}
+            />
+          </Modal>
         )}
       </InfoTeacherContainer>
     </TeacherItemContainer>

@@ -19,6 +19,7 @@ const teachersSlice = createSlice({
     teachersData: [],
     isLoading: false,
     error: null,
+    filter: "",
   },
   extraReducers: (builder) => {
     builder

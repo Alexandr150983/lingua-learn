@@ -8,19 +8,21 @@ const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addFavorite(state, action) {
-      const teacher = action.payload;
-      const exists = state.favorites.some(
-        (favoriteTeacher) => favoriteTeacher.id === teacher.id
-      );
-      if (!exists) {
-        state.favorites.push(teacher);
-      }
+    addFavorite: {
+      reducer(state, action) {
+        const teacher = action.payload;
+        const exists = state.favorites.some(
+          (favoriteTeacher) => favoriteTeacher.name === teacher.name
+        );
+        if (!exists) {
+          state.favorites.push(teacher);
+        }
+      },
     },
     removeFavorite(state, action) {
       const teacherId = action.payload;
       state.favorites = state.favorites.filter(
-        (favoriteTeacher) => favoriteTeacher.id !== teacherId
+        (favoriteTeacher) => favoriteTeacher.name !== teacherId
       );
     },
     clearFavorite(state) {

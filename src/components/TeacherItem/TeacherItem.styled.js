@@ -22,14 +22,18 @@ export const TeacherItemContainer = styled.li`
 //   /* max-height: 328px; */
 //   background-color: var(--white);
 // `;
-
-export const HeartSvg = styled.img`
+export const FavoriteButton = styled.button`
   position: absolute;
   top: 24px;
   right: 24px;
   transform: translate(50%, -50%);
+  background-color: transparent;
   cursor: pointer;
 `;
+
+export const HeartIconActive = styled.img``;
+export const HeartIconNormal = styled.img``;
+
 export const Avatar = styled.div`
   position: relative;
   display: flex;
@@ -56,14 +60,14 @@ export const SvgStatus = styled.img`
 export const InfoTeacherContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 968px;
+  /* max-width: 968px; */
   /* height: 280px; */
 `;
 
 export const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 968px;
+  /* max-width: 968px; */
   /* height: 216px; */
   margin-bottom: 32px;
 `;
@@ -247,6 +251,8 @@ export const Reviewer = styled.h3`
 `;
 
 export const ReviewerRating = styled.div`
+  display: flex;
+  gap: 8px;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;

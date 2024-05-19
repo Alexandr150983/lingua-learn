@@ -2,6 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import favoritesReducer from "./Favorites/favoritesSlice";
 import authReducer from "./Auth/authSlice";
+import { teachersReducer } from "./Teachers/teachersSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -12,12 +14,11 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { teachersReducer } from "./Teachers/teachersSlice";
 
 const teachersPersistConfig = {
   key: "teachers",
   storage,
-  whitelist: ["teachers"],
+  whitelist: ["teachersData"],
 };
 
 const authPersistConfig = {
