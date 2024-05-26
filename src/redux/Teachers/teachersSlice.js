@@ -21,6 +21,11 @@ const teachersSlice = createSlice({
     error: null,
     filter: "",
   },
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(requestTeachers.pending, (state) => {
@@ -38,4 +43,5 @@ const teachersSlice = createSlice({
   },
 });
 
+export const { setFilter } = teachersSlice.actions;
 export const teachersReducer = teachersSlice.reducer;

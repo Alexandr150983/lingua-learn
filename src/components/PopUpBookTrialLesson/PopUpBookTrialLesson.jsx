@@ -38,7 +38,6 @@ const PopUpBookTrialLesson = ({
   teacherAvatar,
   teacherName,
   teacherSurname,
-  // onClose,
 }) => {
   const initialValues = {
     reason: "",
@@ -50,7 +49,6 @@ const PopUpBookTrialLesson = ({
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
-    // onClose();
   };
 
   return (

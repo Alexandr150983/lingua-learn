@@ -224,7 +224,7 @@ export const LevelInfoItem = styled.li`
   }
 `;
 
-export const Expirience = styled.p`
+export const Experience = styled.p`
   margin-bottom: 32px;
   font-weight: 400;
   font-size: 16px;

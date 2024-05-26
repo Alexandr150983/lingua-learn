@@ -39,7 +39,7 @@ import HeartNormal from "../../assets/images/Icons/heart-normal.svg";
 import HeartActive from "../../assets/images/Icons/heart-active.svg";
 import {
   Conditions,
-  Expirience,
+  Experience,
   InfoSpan,
   InfoSpanUnderline,
   InfoTeacherContainer,
@@ -56,7 +56,7 @@ const TeacherItem = ({
   teacher,
   index,
   showMoreInfo,
-  showMoreTogle,
+  showMoreToggle,
   onFavoriteToggle,
   isFavorite,
 }) => {
@@ -132,7 +132,7 @@ const TeacherItem = ({
             </Conditions>
             {showMoreInfo[index] && (
               <ShowMoreInfoContainer>
-                <Expirience>{teacher.experience}</Expirience>
+                <Experience>{teacher.experience}</Experience>
                 <ReviewsList>
                   {teacher.reviews.map((review, index) => (
                     <ReviewsItem key={index}>
@@ -148,7 +148,7 @@ const TeacherItem = ({
               </ShowMoreInfoContainer>
             )}
             {!showMoreInfo[index] && (
-              <ReadMore onClick={() => showMoreTogle(index)}>
+              <ReadMore onClick={() => showMoreToggle(index)}>
                 Read more
               </ReadMore>
             )}

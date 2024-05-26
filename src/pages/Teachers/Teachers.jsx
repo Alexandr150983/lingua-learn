@@ -6,28 +6,35 @@ import {
   LoadMoreButton,
 } from "./Teachers.styled";
 import TeacherItem from "../../components/TeacherItem/TeacherItem";
-import FilterTicher from "../../components/FilterTicher/FilterTicher";
+
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { selectorTeachers } from "../../redux/Teachers/teachersSelector";
-import { selectorFavorites } from "../../redux/Favorites/favoritesSelector";
 import {
   addFavorite,
   removeFavorite,
 } from "../../redux/Favorites/favoritesSlice";
 import { requestTeachers } from "../../redux/Teachers/teachersSlice";
+import {
+  selectTeachersData,
+  selectTeachersError,
+  selectTeachersIsLoading,
+} from "../../redux/Teachers/teachersSelector";
+import FilterTeacher from "../../components/FilterTeacher/FilterTeacher";
+import { selectFavorites } from "../../redux/Favorites/favoritesSelector";
 
 const Teachers = () => {
   const [visibleCards, setVisibleCards] = useState(4);
   const [showMoreInfo, setShowMoreInfo] = useState({});
-  const { teachersData, isLoading, error } = useSelector(selectorTeachers);
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectorFavorites);
+  const teachersData = useSelector(selectTeachersData);
+  const isLoading = useSelector(selectTeachersIsLoading);
+  const error = useSelector(selectTeachersError);
 
-  // console.log(favorites);
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+
   console.log(teachersData);
 
-  const showMoreTogle = (index) => {
+  const showMoreToggle = (index) => {
     setShowMoreInfo((prevState) => ({
       ...prevState,
       [index]: !prevState[index],
@@ -58,7 +65,7 @@ const Teachers = () => {
 
   return (
     <TeachersContainer>
-      <FilterTicher />
+      <FilterTeacher />
       {isLoading && <Loader />}
       {error && <ErrorMessage message={error} />}
       <TeacherCardList>
@@ -71,7 +78,7 @@ const Teachers = () => {
                 teacher={teacher}
                 index={index}
                 showMoreInfo={showMoreInfo}
-                showMoreTogle={showMoreTogle}
+                showMoreToggle={showMoreToggle}
                 onFavoriteToggle={handleFavoriteToggle}
                 isFavorite={favorites.some(
                   (favorite) => favorite.name === teacher.name

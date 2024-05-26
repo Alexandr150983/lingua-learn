@@ -7,12 +7,12 @@ import {
   TeacherCardList,
   Title,
 } from "./Favorites.styled";
-import { selectorFavorites } from "../../redux/Favorites/favoritesSelector";
 import { useState } from "react";
+import { selectFavorites } from "../../redux/Favorites/favoritesSelector";
 
 const FavoritesTeacher = () => {
   const dispatch = useDispatch();
-  const favorites = useSelector(selectorFavorites);
+  const favorites = useSelector(selectFavorites);
 
   const [showMoreInfo, setShowMoreInfo] = useState({});
 
@@ -37,7 +37,7 @@ const FavoritesTeacher = () => {
               teacher={teacher}
               index={index}
               showMoreInfo={showMoreInfo}
-              showMoreTogle={handleShowMoreToggle}
+              showMoreToggle={handleShowMoreToggle}
               onFavoriteToggle={() => handleFavoriteToggle(teacher.name)}
               isFavorite={true}
             />
