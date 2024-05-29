@@ -1,4 +1,3 @@
-import { ErrorMessage, Field, Form } from "formik";
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
@@ -23,18 +22,18 @@ export const Text = styled.p`
   margin-bottom: 40px;
 `;
 
-export const ErrorMessageDiv = styled(ErrorMessage)`
+export const ErrorMessageDiv = styled.div`
   color: var(--toastify-color-error);
   padding-left: 16px;
 `;
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-export const StyledField = styled(Field)`
+export const StyledField = styled.input`
   flex: 1;
   font-weight: 400;
   font-size: 16px;

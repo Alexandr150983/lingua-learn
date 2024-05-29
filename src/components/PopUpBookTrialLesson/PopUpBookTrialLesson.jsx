@@ -1,4 +1,5 @@
-import { Formik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
   AvatarImg,
@@ -32,6 +33,7 @@ const schema = yup.object().shape({
     .min(10, "Too Short!")
     .max(13, "Too Long!")
     .required("Required"),
+  reason: yup.string().required("Required"),
 });
 
 const PopUpBookTrialLesson = ({
@@ -39,17 +41,22 @@ const PopUpBookTrialLesson = ({
   teacherName,
   teacherSurname,
 }) => {
-  const initialValues = {
-    reason: "",
-    fullName: "",
-    email: "",
-    phoneNumber: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
-  };
+  const selectedReason = watch("reason");
 
   return (
     <FormContainer>
@@ -68,111 +75,111 @@ const PopUpBookTrialLesson = ({
         </Teacher>
       </TeacherContainer>
       <LessonTitle>What is your main reason for learning English?</LessonTitle>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={handleSubmit}
-      >
-        {(formikProps) => (
-          <StyledForm autoComplete="off">
-            <RadioButtonContainer>
-              <RadioLabel>
-                <RadioInput
-                  type="radio"
-                  name="reason"
-                  value="Career and business"
-                />
-                <RadioButton
-                  selected={formikProps.values.reason === "Career and business"}
-                  selectedSrc={RadioCheckSelected}
-                  unselectedSrc={RadioCheckUnselected}
-                />
-                Career and business
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInput
-                  type="radio"
-                  value="Lesson for kids"
-                  name="reason"
-                />
-                <RadioButton
-                  selected={formikProps.values.reason === "Lesson for kids"}
-                  selectedSrc={RadioCheckSelected}
-                  unselectedSrc={RadioCheckUnselected}
-                />
-                Lesson for kids
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInput
-                  type="radio"
-                  aria-label="Living abroad"
-                  value="Living abroad"
-                  name="reason"
-                />
-                <RadioButton
-                  selected={formikProps.values.reason === "Living abroad"}
-                  selectedSrc={RadioCheckSelected}
-                  unselectedSrc={RadioCheckUnselected}
-                />
-                Living abroad
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInput
-                  type="radio"
-                  value="Exams and coursework"
-                  name="reason"
-                />
-                <RadioButton
-                  selected={
-                    formikProps.values.reason === "Exams and coursework"
-                  }
-                  selectedSrc={RadioCheckSelected}
-                  unselectedSrc={RadioCheckUnselected}
-                />
-                Exams and coursework
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInput
-                  type="radio"
-                  value="Culture, travel or hobby"
-                  name="reason"
-                />
-                <RadioButton
-                  selected={
-                    formikProps.values.reason === "Culture, travel or hobby"
-                  }
-                  selectedSrc={RadioCheckSelected}
-                  unselectedSrc={RadioCheckUnselected}
-                />
-                Culture, travel or hobby
-              </RadioLabel>
-            </RadioButtonContainer>
-            <InputContainer>
-              <Label htmlFor="fullName">
-                <StyledField
-                  type="text"
-                  name="fullName"
-                  placeholder="Full Name"
-                />
-              </Label>
-              <ErrorMessageDiv name="fullName" component="div" />
-              <Label htmlFor="email">
-                <StyledField type="text" name="email" placeholder="Email" />
-              </Label>
-              <ErrorMessageDiv name="email" component="div" />
-              <Label htmlFor="phoneNumber">
-                <StyledField
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="Phone Number"
-                />
-              </Label>
-              <ErrorMessageDiv name="phoneNumber" component="div" />
-            </InputContainer>
-            <BookButton type="submit">Book</BookButton>
-          </StyledForm>
+      <StyledForm autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <RadioButtonContainer>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              value="Career and business"
+              {...register("reason")}
+            />
+            <RadioButton
+              selected={selectedReason === "Career and business"}
+              selectedSrc={RadioCheckSelected}
+              unselectedSrc={RadioCheckUnselected}
+            />
+            Career and business
+          </RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              value="Lesson for kids"
+              {...register("reason")}
+            />
+            <RadioButton
+              selected={selectedReason === "Lesson for kids"}
+              selectedSrc={RadioCheckSelected}
+              unselectedSrc={RadioCheckUnselected}
+            />
+            Lesson for kids
+          </RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              value="Living abroad"
+              {...register("reason")}
+            />
+            <RadioButton
+              selected={selectedReason === "Living abroad"}
+              selectedSrc={RadioCheckSelected}
+              unselectedSrc={RadioCheckUnselected}
+            />
+            Living abroad
+          </RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              value="Exams and coursework"
+              {...register("reason")}
+            />
+            <RadioButton
+              selected={selectedReason === "Exams and coursework"}
+              selectedSrc={RadioCheckSelected}
+              unselectedSrc={RadioCheckUnselected}
+            />
+            Exams and coursework
+          </RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              value="Culture, travel or hobby"
+              {...register("reason")}
+            />
+            <RadioButton
+              selected={selectedReason === "Culture, travel or hobby"}
+              selectedSrc={RadioCheckSelected}
+              unselectedSrc={RadioCheckUnselected}
+            />
+            Culture, travel or hobby
+          </RadioLabel>
+        </RadioButtonContainer>
+        {errors.reason && (
+          <ErrorMessageDiv>{errors.reason.message}</ErrorMessageDiv>
         )}
-      </Formik>
+        <InputContainer>
+          <Label htmlFor="fullName">
+            <StyledField
+              type="text"
+              {...register("fullName")}
+              placeholder="Full Name"
+            />
+          </Label>
+          {errors.fullName && (
+            <ErrorMessageDiv>{errors.fullName.message}</ErrorMessageDiv>
+          )}
+          <Label htmlFor="email">
+            <StyledField
+              type="text"
+              {...register("email")}
+              placeholder="Email"
+            />
+          </Label>
+          {errors.email && (
+            <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
+          )}
+          <Label htmlFor="phoneNumber">
+            <StyledField
+              type="text"
+              {...register("phoneNumber")}
+              placeholder="Phone Number"
+            />
+          </Label>
+          {errors.phoneNumber && (
+            <ErrorMessageDiv>{errors.phoneNumber.message}</ErrorMessageDiv>
+          )}
+        </InputContainer>
+        <BookButton type="submit">Book</BookButton>
+      </StyledForm>
     </FormContainer>
   );
 };

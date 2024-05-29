@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import * as yup from "yup";
 import eyeOffSvg from "assets/images/Icons/eye-off.svg";
 import { useDispatch } from "react-redux";
@@ -16,6 +15,8 @@ import {
   Title,
 } from "./SignUp.styled";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const schema = yup.object().shape({
   name: yup.string().required("Required"),
@@ -31,33 +32,35 @@ const SignUpForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { email, password } = values;
-
+  const onSubmit = async (data) => {
+    const { email, password } = data;
     const auth = getAuth();
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-      })
-      .catch((error) => {
-        setErrorMessage("Invalid user!");
-      });
-    resetForm();
-    onClose();
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      dispatch(
+        setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken,
+        })
+      );
+      reset();
+      onClose();
+    } catch (error) {
+      setErrorMessage("Invalid user!");
+    }
   };
 
   return (
@@ -67,35 +70,35 @@ const SignUpForm = ({ onClose }) => {
         Thank you for your interest in our platform! In order to register, we
         need some information. Please provide us with the following information
       </Text>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={handleSubmit}
-      >
-        <StyledForm autoComplete="off">
-          <Label htmlFor="name">
-            <StyledField type="text" name="name" placeholder="Name" />
-          </Label>
-          <ErrorMessageDiv name="name" component="div" />
-          <Label htmlFor="email">
-            <StyledField type="text" name="email" placeholder="Email" />
-          </Label>
-          <ErrorMessageDiv name="email" component="div" />
-          <Label htmlFor="password">
-            <StyledField
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-            <span>
-              <img src={eyeOffSvg} alt="eye off" />
-            </span>
-          </Label>
-          <ErrorMessageDiv name="password" component="div" />
-          {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-          <SignUpButton type="submit">Sign Up</SignUpButton>
-        </StyledForm>
-      </Formik>
+      <StyledForm autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <Label htmlFor="name">
+          <StyledField type="text" {...register("name")} placeholder="Name" />
+        </Label>
+        {errors.name && (
+          <ErrorMessageDiv>{errors.name.message}</ErrorMessageDiv>
+        )}
+        <Label htmlFor="email">
+          <StyledField type="text" {...register("email")} placeholder="Email" />
+        </Label>
+        {errors.email && (
+          <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
+        )}
+        <Label htmlFor="password">
+          <StyledField
+            type="password"
+            {...register("password")}
+            placeholder="Password"
+          />
+          <span>
+            <img src={eyeOffSvg} alt="eye off" />
+          </span>
+        </Label>
+        {errors.password && (
+          <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
+        )}
+        {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+        <SignUpButton type="submit">Sign Up</SignUpButton>
+      </StyledForm>
     </FormContainer>
   );
 };

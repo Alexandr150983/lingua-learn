@@ -22,7 +22,7 @@ export const FilterLabel = styled.label`
 
 export const LanguageInput = styled.input`
   border-radius: 14px;
-  padding: 16px 148px 16px 18px;
+  padding: 16px 18px;
   max-width: 221px;
   background: var(--white);
   font-weight: 500;

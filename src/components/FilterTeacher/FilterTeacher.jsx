@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/Teachers/teachersSlice";
 import { selectTeachersFilter } from "../../redux/Teachers/teachersSelector";
+import chevronDown from "../../assets/images/Icons/chevron-down.svg";
 
 const FilterTeacher = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const FilterTeacher = () => {
       <FilterLanguage>
         <FilterLabel>Languages</FilterLabel>
         <LanguageInput onChange={handleFilter} value={filter}></LanguageInput>
+        <span>
+          <img src={chevronDown} alt="chevron down" />
+        </span>
       </FilterLanguage>
       <FilterLevel>
         <FilterLabel>Level of knowledge</FilterLabel>
