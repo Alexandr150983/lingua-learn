@@ -38,7 +38,9 @@ const FavoritesTeacher = () => {
               index={index}
               showMoreInfo={showMoreInfo}
               showMoreToggle={handleShowMoreToggle}
-              onFavoriteToggle={() => handleFavoriteToggle(teacher.name)}
+              onFavoriteToggle={() =>
+                handleFavoriteToggle(teacher.name + " " + teacher.surname)
+              }
               isFavorite={true}
             />
           ))

@@ -21,3 +21,18 @@ export const selectTeachersFilter = createSelector(
   selectTeachersStore,
   (teachers) => teachers.filter
 );
+
+export const selectTeachersLanguages = createSelector(
+  selectTeachersStore,
+  (teachers) => teachers.languages
+);
+
+export const selectTeachersLevels = createSelector(
+  selectTeachersStore,
+  (teachers) => teachers.levels
+);
+
+export const selectTeachersPrices = createSelector(
+  selectTeachersStore,
+  (teachers) => teachers.prices
+);

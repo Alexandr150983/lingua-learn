@@ -13,17 +13,38 @@ export const requestTeachers = createAsyncThunk(
   }
 );
 
+const initialState = {
+  teachersData: [],
+  isLoading: false,
+  error: null,
+  filter: {
+    language: "",
+    level: "",
+    price: "",
+  },
+  languages: [],
+  levels: [],
+  prices: [],
+};
+
+const collectUniqueValues = (teachers) => {
+  const languages = [
+    ...new Set(teachers.flatMap((teacher) => teacher.languages)),
+  ];
+  const levels = [...new Set(teachers.flatMap((teacher) => teacher.levels))];
+  const prices = [
+    ...new Set(teachers.map((teacher) => teacher.price_per_hour)),
+  ].sort((a, b) => a - b);
+
+  return { languages, levels, prices };
+};
+
 const teachersSlice = createSlice({
   name: "teachers",
-  initialState: {
-    teachersData: [],
-    isLoading: false,
-    error: null,
-    filter: "",
-  },
+  initialState,
   reducers: {
     setFilter: (state, action) => {
-      state.filter = action.payload;
+      state.filter = { ...state.filter, ...action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -31,14 +52,19 @@ const teachersSlice = createSlice({
       .addCase(requestTeachers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(requestTeachers.fulfilled, (state, action) => {
+      .addCase(requestTeachers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.teachersData = action.payload;
+        state.teachersData = payload;
         state.error = null;
+
+        const { languages, levels, prices } = collectUniqueValues(payload);
+        state.languages = languages;
+        state.levels = levels;
+        state.prices = prices;
       })
-      .addCase(requestTeachers.rejected, (state, action) => {
+      .addCase(requestTeachers.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = payload;
       });
   },
 });

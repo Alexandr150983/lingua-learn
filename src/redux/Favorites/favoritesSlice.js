@@ -12,7 +12,9 @@ const favoritesSlice = createSlice({
       reducer(state, action) {
         const teacher = action.payload;
         const exists = state.favorites.some(
-          (favoriteTeacher) => favoriteTeacher.name === teacher.name
+          (favoriteTeacher) =>
+            favoriteTeacher.name === teacher.name &&
+            favoriteTeacher.surname === teacher.surname // Додаємо перевірку і на прізвище
         );
         if (!exists) {
           state.favorites.push(teacher);
@@ -22,7 +24,8 @@ const favoritesSlice = createSlice({
     removeFavorite(state, action) {
       const teacherId = action.payload;
       state.favorites = state.favorites.filter(
-        (favoriteTeacher) => favoriteTeacher.name !== teacherId
+        (favoriteTeacher) =>
+          `${favoriteTeacher.name} ${favoriteTeacher.surname}` !== teacherId // Перевіряємо ім'я та прізвище разом
       );
     },
     clearFavorite(state) {
