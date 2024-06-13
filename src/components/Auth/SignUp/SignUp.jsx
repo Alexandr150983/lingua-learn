@@ -49,6 +49,7 @@ const SignUpForm = ({ onClose }) => {
         email,
         password
       );
+
       dispatch(
         setUser({
           email: user.email,
@@ -56,7 +57,9 @@ const SignUpForm = ({ onClose }) => {
           token: user.accessToken,
         })
       );
+
       reset();
+
       onClose();
     } catch (error) {
       setErrorMessage("Invalid user!");
@@ -73,16 +76,22 @@ const SignUpForm = ({ onClose }) => {
       <StyledForm autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <Label htmlFor="name">
           <StyledField type="text" {...register("name")} placeholder="Name" />
+          {errors.name && (
+            <ErrorMessageDiv>{errors.name.message}</ErrorMessageDiv>
+          )}
         </Label>
-        {errors.name && (
-          <ErrorMessageDiv>{errors.name.message}</ErrorMessageDiv>
-        )}
+
         <Label htmlFor="email">
-          <StyledField type="text" {...register("email")} placeholder="Email" />
+          <StyledField
+            type="email"
+            {...register("email")}
+            placeholder="Email"
+          />
+          {errors.email && (
+            <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
+          )}
         </Label>
-        {errors.email && (
-          <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
-        )}
+
         <Label htmlFor="password">
           <StyledField
             type="password"
@@ -92,10 +101,11 @@ const SignUpForm = ({ onClose }) => {
           <span>
             <img src={eyeOffSvg} alt="eye off" />
           </span>
+          {errors.password && (
+            <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
+          )}
         </Label>
-        {errors.password && (
-          <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
-        )}
+
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <SignUpButton type="submit">Sign Up</SignUpButton>
       </StyledForm>

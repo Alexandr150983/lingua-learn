@@ -277,3 +277,12 @@ export const BookTrialLessonButton = styled.button`
   line-height: 1.56;
   color: var(--black);
 `;
+
+export const TextContainer = styled.div``;
+
+export const Text = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+`; 

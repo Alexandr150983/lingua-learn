@@ -29,6 +29,8 @@ import {
   FavoriteButton,
   HeartIconActive,
   HeartIconNormal,
+  Text,
+  TextContainer,
 } from "./TeacherItem.styled";
 
 import SvgStatusAvatar from "../../assets/images/Icons/status.svg";
@@ -51,6 +53,8 @@ import {
 } from "./TeacherItem.styled";
 import Modal from "../../components/Modal/Modal";
 import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
+import { selectIsAuth } from "../../redux/Auth/authSelector";
+import { useSelector } from "react-redux";
 
 const TeacherItem = ({
   teacher,
@@ -61,10 +65,26 @@ const TeacherItem = ({
   isFavorite,
 }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
+
+  const isAuth = useSelector(selectIsAuth);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
+  };
+
+  const toggleAuthPopup = () => {
+    setIsAuthPopupOpen(!isAuthPopupOpen);
+  };
+
+  const handleFavoriteButtonClick = (e) => {
+    e.stopPropagation();
+    if (!isAuth) {
+      toggleAuthPopup();
+    } else {
+      onFavoriteToggle(teacher);
+    }
   };
 
   const handleTeacherClick = (teacher) => {
@@ -75,9 +95,7 @@ const TeacherItem = ({
     <TeacherItemContainer onClick={() => handleTeacherClick(teacher)}>
       <FavoriteButton
         type="button"
-        onClick={(e) => {
-          onFavoriteToggle(teacher);
-        }}
+        onClick={handleFavoriteButtonClick}
         $isFavorite={isFavorite}
       >
         {isFavorite ? (
@@ -176,6 +194,13 @@ const TeacherItem = ({
               teacherName={selectedTeacher.name}
               teacherSurname={selectedTeacher.surname}
             />
+          </Modal>
+        )}
+        {isAuthPopupOpen && (
+          <Modal isOpen={isAuthPopupOpen} onClose={toggleAuthPopup}>
+            <TextContainer>
+              <Text>You need to be logged in to use this feature.</Text>
+            </TextContainer>
           </Modal>
         )}
       </InfoTeacherContainer>

@@ -1,5 +1,4 @@
-import { useDispatch } from "react-redux";
-import { useAuth } from "../../hooks/useAuth";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../redux/Auth/authSlice";
 
 import {
@@ -23,13 +22,15 @@ import SignInForm from "components/Auth/SignIn/SignIn";
 import Modal from "components/Modal/Modal";
 import { useState } from "react";
 import SignUpForm from "components/Auth/SignUp/SignUp";
+import { selectIsAuth } from "../../redux/Auth/authSelector";
+import { clearFavorite } from "../../redux/Favorites/favoritesSlice";
 
 const Header = () => {
   const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
   const [isModalOpenRegister, setIsModalOpenRegister] = useState(false);
 
   const dispatch = useDispatch();
-  const { isAuth } = useAuth();
+  const isAuth = useSelector(selectIsAuth);
 
   const openModalLogin = () => {
     setIsModalOpenLogin(true);
@@ -51,9 +52,18 @@ const Header = () => {
     <StyledHeader>
       <Logo />
       <HederLinkContainer>
-        <HeaderLink to={HOME_ROUTE}>Home</HeaderLink>
-        <HeaderLink to={TEACHERS_ROUTE}>Teachers</HeaderLink>
-        <HeaderLink to={FAVORITES_ROUTE}>Favorites</HeaderLink>
+        {isAuth ? (
+          <>
+            <HeaderLink to={HOME_ROUTE}>Home</HeaderLink>
+            <HeaderLink to={TEACHERS_ROUTE}>Teachers</HeaderLink>
+            <HeaderLink to={FAVORITES_ROUTE}>Favorites</HeaderLink>
+          </>
+        ) : (
+          <>
+            <HeaderLink to={HOME_ROUTE}>Home</HeaderLink>
+            <HeaderLink to={TEACHERS_ROUTE}>Teachers</HeaderLink>
+          </>
+        )}
       </HederLinkContainer>
       <AuthContainer>
         {!isAuth ? (
@@ -70,6 +80,7 @@ const Header = () => {
           <RegisterButton
             onClick={() => {
               dispatch(removeUser());
+              dispatch(clearFavorite());
             }}
           >
             Log out

@@ -24,7 +24,7 @@ const teachersPersistConfig = {
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "email", "id"],
 };
 
 const favoritesPersistConfig = {

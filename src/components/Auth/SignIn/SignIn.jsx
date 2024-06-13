@@ -46,6 +46,7 @@ const SignInForm = ({ onClose }) => {
 
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
+
       dispatch(
         setUser({
           email: user.email,
@@ -53,6 +54,7 @@ const SignInForm = ({ onClose }) => {
           token: user.accessToken,
         })
       );
+
       reset();
       onClose();
     } catch (error) {
@@ -69,11 +71,16 @@ const SignInForm = ({ onClose }) => {
       </Text>
       <StyledForm autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <Label htmlFor="email">
-          <StyledField type="text" {...register("email")} placeholder="Email" />
+          <StyledField
+            type="email"
+            {...register("email")}
+            placeholder="Email"
+          />
+          {errors.email && (
+            <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
+          )}
         </Label>
-        {errors.email && (
-          <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
-        )}
+
         <Label htmlFor="password">
           <StyledField
             type="password"
@@ -83,10 +90,11 @@ const SignInForm = ({ onClose }) => {
           <span>
             <img src={eyeOffSvg} alt="eye off" />
           </span>
+          {errors.password && (
+            <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
+          )}
         </Label>
-        {errors.password && (
-          <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
-        )}
+
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <LogInButton type="submit">Log in</LogInButton>
       </StyledForm>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   TeachersContainer,
@@ -33,32 +33,27 @@ const Teachers = () => {
   const filter = useSelector(selectTeachersFilter);
   const favorites = useSelector(selectFavorites);
 
-  console.log(teachersData);
-
   useEffect(() => {
     dispatch(requestTeachers());
   }, [dispatch]);
 
-  const filteredTeachers = useMemo(() => {
+  const filteredTeachers = teachersData.filter((teacher) => {
     const { language, level, price } = filter;
 
-    return teachersData.filter((teacher) => {
-      const matchesLanguage =
-        !language ||
-        teacher.languages.some((lang) =>
-          lang.toLowerCase().includes(language.toLowerCase())
-        );
-      const matchesLevel =
-        !level ||
-        teacher.levels.some((lvl) =>
-          lvl.toLowerCase().includes(level.toLowerCase())
-        );
-      const matchesPrice =
-        !price || teacher.price_per_hour <= parseFloat(price);
+    const matchesLanguage =
+      !language ||
+      teacher.languages.some((lang) =>
+        lang.toLowerCase().includes(language.toLowerCase())
+      );
+    const matchesLevel =
+      !level ||
+      teacher.levels.some((lvl) =>
+        lvl.toLowerCase().includes(level.toLowerCase())
+      );
+    const matchesPrice = !price || teacher.price_per_hour <= parseFloat(price);
 
-      return matchesLanguage && matchesLevel && matchesPrice;
-    });
-  }, [teachersData, filter]);
+    return matchesLanguage && matchesLevel && matchesPrice;
+  });
 
   const showMoreToggle = (index) => {
     setShowMoreInfo((prevState) => ({
@@ -73,11 +68,12 @@ const Teachers = () => {
 
   const handleFavoriteToggle = (teacher) => {
     const isCurrentlyFavorite = favorites.some(
-      (favorite) => favorite.name === teacher.name
+      (favorite) =>
+        favorite.name === teacher.name && favorite.surname === teacher.surname
     );
 
     if (isCurrentlyFavorite) {
-      dispatch(removeFavorite(teacher.name + " " + teacher.surname));
+      dispatch(removeFavorite(`${teacher.name} ${teacher.surname}`));
     } else {
       dispatch(addFavorite(teacher));
     }
@@ -98,7 +94,9 @@ const Teachers = () => {
             showMoreToggle={showMoreToggle}
             onFavoriteToggle={handleFavoriteToggle}
             isFavorite={favorites.some(
-              (favorite) => favorite.name === teacher.name
+              (favorite) =>
+                favorite.name === teacher.name &&
+                favorite.surname === teacher.surname
             )}
           />
         ))}

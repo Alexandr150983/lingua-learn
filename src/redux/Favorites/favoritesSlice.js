@@ -14,7 +14,7 @@ const favoritesSlice = createSlice({
         const exists = state.favorites.some(
           (favoriteTeacher) =>
             favoriteTeacher.name === teacher.name &&
-            favoriteTeacher.surname === teacher.surname // Додаємо перевірку і на прізвище
+            favoriteTeacher.surname === teacher.surname
         );
         if (!exists) {
           state.favorites.push(teacher);
@@ -25,7 +25,7 @@ const favoritesSlice = createSlice({
       const teacherId = action.payload;
       state.favorites = state.favorites.filter(
         (favoriteTeacher) =>
-          `${favoriteTeacher.name} ${favoriteTeacher.surname}` !== teacherId // Перевіряємо ім'я та прізвище разом
+          `${favoriteTeacher.name} ${favoriteTeacher.surname}` !== teacherId
       );
     },
     clearFavorite(state) {
