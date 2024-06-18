@@ -42,19 +42,19 @@ const Home = () => {
       <Tutors>
         <ListItems>
           <Item>
-            <TitleItem>32,000 +</TitleItem>
+            <TitleItem>32,000&nbsp;+</TitleItem>
             <TextItem>Experienced tutors</TextItem>
           </Item>
           <Item>
-            <TitleItem>300,000 +</TitleItem>
+            <TitleItem>300,000&nbsp;+</TitleItem>
             <TextItem>5-star tutor reviews</TextItem>
           </Item>
           <Item>
-            <TitleItem>120 +</TitleItem>
+            <TitleItem>120&nbsp;+</TitleItem>
             <TextItem>Subjects taught</TextItem>
           </Item>
           <Item>
-            <TitleItem>200 +</TitleItem>
+            <TitleItem>200&nbsp;+</TitleItem>
             <TextItem>Tutor nationalities</TextItem>
           </Item>
         </ListItems>
