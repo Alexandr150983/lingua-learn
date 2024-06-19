@@ -13,7 +13,7 @@ export const LinkStyled = styled(Link)`
 `;
 
 export const LogoText = styled.span`
-  margin-left: 2px;
+  margin-left: 0.55vw;
   font-weight: 500;
   font-size: 8px;
   line-height: 1.2;
@@ -21,17 +21,22 @@ export const LogoText = styled.span`
   color: var(--black);
 
   @media (min-width: 480px) {
-    margin-left: 4px;
+    /* margin-left: 4px; */
     font-size: 10px;
   }
 
   @media (min-width: 768px) {
-    margin-left: 6px;
-    font-size: 12px;
+    /* margin-left: 6px; */
+    font-size: 14px;
   }
 
   @media (min-width: 1024px) {
-    margin-left: 8px;
+    /* margin-left: 8px; */
+    font-size: 20px;
+  }
+
+  @media (min-width: 1400px) {
+    /* margin-left: 8px; */
     font-size: 20px;
   }
 `;
