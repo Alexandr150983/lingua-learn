@@ -12,6 +12,7 @@ import {
   HeaderLink,
   HederLinkContainer,
   LoginLink,
+  LoginSvg,
   LoginText,
   RegisterButton,
   StyledHeader,
@@ -69,7 +70,7 @@ const Header = () => {
         {!isAuth ? (
           <>
             <LoginLink onClick={openModalLogin}>
-              <img src={loginIcon} alt="Log in" />
+              <LoginSvg src={loginIcon} alt="Log in" />
               <LoginText>Log in</LoginText>
             </LoginLink>
             <RegisterButton onClick={openModalRegister}>

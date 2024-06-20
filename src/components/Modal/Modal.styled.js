@@ -18,13 +18,14 @@ export const ModalContainer = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
+  width: 39.24vw;
   top: 50%;
   left: 50%;
   max-width: 100%;
-  transform: translate(-50%, -50%);
-  padding: 64px;
-  border-radius: 30px;
   max-height: 100%;
+  transform: translate(-50%, -50%);
+  padding: 4.44vw;
+  border-radius: 2.08vw;
   scrollbar-width: none;
   overflow: auto;
   background-color: var(--white);
@@ -32,7 +33,9 @@ export const ModalContainer = styled.div`
 
 export const CloseSvg = styled.img`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.39vw;
+  right: 1.39vw;
+  width: 2.22vw;
+  height: 2.22vw;
   cursor: pointer;
 `;
