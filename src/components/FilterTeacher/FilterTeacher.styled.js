@@ -1,52 +1,9 @@
 import styled from "styled-components";
 
-export const LanguageInputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
-export const Dropdown = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  padding: 14px 18px;
-  background: var(--white);
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  color: var(--color-text-second);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11;
-`;
-
-export const DropdownItem = styled.div`
-  padding: 8px;
-  cursor: pointer;
-  &:hover {
-    color: var(--black);
-  }
-`;
-
-export const LevelInputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
-export const PriceInputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
 export const Filter = styled.form`
   display: flex;
-  gap: 20px;
-  margin-bottom: 32px;
+  gap: 1.39vw;
+  margin-bottom: 2.22vw;
 `;
 
 export const FilterLanguage = styled.div`
@@ -56,20 +13,26 @@ export const FilterLanguage = styled.div`
 `;
 
 export const FilterLabel = styled.label`
-  margin-bottom: 8px;
+  margin-bottom: 0.55vw;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.97vw;
   line-height: 1.29;
   color: var(--color-text-fourth);
 `;
 
+export const LanguageInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+
 export const LanguageInput = styled.input`
-  border-radius: 14px;
-  padding: 16px 18px;
+  border-radius: 0.97vw;
+  padding: 1.11vw 1.25vw;
   /* max-width: 221px; */
   background: var(--white);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.25vw;
   line-height: 1.11;
   color: var(--black);
   outline: none;
@@ -81,13 +44,19 @@ export const FilterLevel = styled.div`
   /* max-width: 198px; */
 `;
 
+export const LevelInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+
 export const LevelInput = styled.input`
-  border-radius: 14px;
-  padding: 14px 81px 14px 18px;
+  border-radius: 0.97vw;
+  padding: 1.11vw 1.25vw;
   /* max-width: 198px; */
   background: var(--white);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.25vw;
   line-height: 1.11;
   color: var(--black);
   outline: none;
@@ -99,21 +68,56 @@ export const FilterPrice = styled.div`
   /* max-width: 124px; */
 `;
 
+export const PriceInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+
 export const PriceInput = styled.input`
-  border-radius: 14px;
-  padding: 14px 18px;
-  /* max-width: 124px; */
+  border-radius: 0.97vw;
+  padding: 1.11vw 1.25vw;
+  max-width: 8.61vw;
   background: var(--white);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.25vw;
   line-height: 1.11;
   color: var(--black);
   outline: none;
 `;
 
+export const Dropdown = styled.ul`
+  position: absolute;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.56vw;
+  left: 0;
+  right: 0;
+  padding: 0.97vw 1.25vw;
+  background: var(--white);
+  border-radius: 0.83vw;
+  border: 0.07vw solid #ccc;
+  box-shadow: 0 0.14vw 0.69vw rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  color: var(--color-text-second);
+  font-weight: 500;
+  font-size: 1.25vw;
+  line-height: 1.11;
+`;
+
+export const DropdownItem = styled.li`
+  cursor: pointer;
+  &:hover {
+    color: var(--black);
+  }
+`;
+
 export const ChevronIcon = styled.img`
   position: absolute;
-  right: 8px;
+  right: 0.97vw;
+  width: 1.39vw;
+  height: 1.39vw;
   cursor: pointer;
   pointer-events: none;
   pointer-events: auto;

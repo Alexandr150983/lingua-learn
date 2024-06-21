@@ -25,6 +25,7 @@ export const Text = styled.p`
 export const ErrorMessageDiv = styled.div`
   color: var(--toastify-color-error);
   padding-left: 1.11vw;
+  font-size: 1.11vw;
 `;
 
 export const StyledForm = styled.form`

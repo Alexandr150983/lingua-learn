@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import {
   ErrorMessageDiv,
+  EyeSvg,
   FormContainer,
   Label,
   SignUpButton,
@@ -99,7 +100,7 @@ const SignUpForm = ({ onClose }) => {
             placeholder="Password"
           />
           <span>
-            <img src={eyeOffSvg} alt="eye off" />
+            <EyeSvg src={eyeOffSvg} alt="eye off" />
           </span>
           {errors.password && (
             <ErrorMessageDiv>{errors.password.message}</ErrorMessageDiv>
