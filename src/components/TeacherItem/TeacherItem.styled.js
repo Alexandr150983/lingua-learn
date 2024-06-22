@@ -3,78 +3,70 @@ import styled from "styled-components";
 export const TeacherItemContainer = styled.li`
   position: relative;
   display: flex;
-  gap: 48px;
-  /* margin-bottom: 32px; */
-  border-radius: 24px;
-  padding: 24px;
-  /* width: 1184px; */
+  gap: 3.33vw;
+  border-radius: 1.67vw;
+  padding: 1.67vw;
   background-color: var(--white);
 `;
 
-// export const TeacherItem = styled.li`
-//   position: relative;
-//   display: flex;
-//   gap: 48px;
-//   margin-bottom: 32px;
-//   border-radius: 24px;
-//   padding: 24px;
-//   width: 1184px;
-//   /* max-height: 328px; */
-//   background-color: var(--white);
-// `;
 export const FavoriteButton = styled.button`
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 1.67vw;
+  right: 1.67vw;
   transform: translate(50%, -50%);
   background-color: transparent;
   cursor: pointer;
 `;
 
-export const HeartIconActive = styled.img``;
-export const HeartIconNormal = styled.img``;
+export const HeartIconActive = styled.img`
+  width: 1.8vw;
+  height: 1.8vw;
+`;
+export const HeartIconNormal = styled.img`
+  width: 1.8vw;
+  height: 1.8vw;
+`;
 
 export const Avatar = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--third-gold);
-  border-radius: 100px;
-  min-width: 120px;
-  height: 120px;
+  border: 0.21vw solid var(--third-gold);
+  border-radius: 6.94vw;
+  min-width: 8.33vw;
+  height: 8.33vw;
   background: var(--white);
 `;
+
 export const AvatarImg = styled.img`
   border-radius: 100px;
-  width: 96px;
-  height: 96px;
+  width: 6.67vw;
+  height: 6.67vw;
 `;
 
 export const SvgStatus = styled.img`
   position: absolute;
-  left: 85px;
-  bottom: 89px;
+  left: 5.9vw;
+  bottom: 5.9vw;
+  width: 0.83vw;
+  height: 0.83vw;
 `;
 
 export const InfoTeacherContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* max-width: 968px; */
-  /* height: 280px; */
 `;
 
 export const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
-  /* max-width: 968px; */
-  /* height: 216px; */
-  margin-bottom: 32px;
+  margin-bottom: 2.22vw;
 `;
 
 export const TitleCardContainer = styled.div`
   display: flex;
-  margin-bottom: 32px;
+  margin-bottom: 2.22vw;
   align-items: flex-start;
 `;
 
@@ -84,58 +76,65 @@ export const Title = styled.div`
 `;
 
 export const TitleCardText = styled.p`
-  margin-bottom: 8px;
+  margin-bottom: 0.56vw;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--color-text-fourth);
 `;
 
 export const TitleCardTitle = styled.h2`
   font-weight: 500;
-  font-size: 24px;
+  font-size: 1.67vw;
   line-height: 1;
   color: var(--black);
 `;
 
-export const BookSvg = styled.img``;
+export const BookSvg = styled.img`
+  width: 1.11vw;
+`;
 
-export const PipeImg = styled.img``;
+export const PipeImg = styled.img`
+  width: 0.14vw;
+`;
 
-export const StarSvg = styled.img``;
+export const StarSvg = styled.img`
+  width: 1.11vw;
+`;
 
 export const TitleInfoList = styled.ul`
   display: flex;
-  gap: 16px;
+  gap: 1.11vw;
 `;
 
 export const LessonsOnline = styled.li`
   display: flex;
-  gap: 8px;
+  gap: 0.56vw;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
 
 export const LessonsDone = styled.li`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
 
 export const Rating = styled.li`
   display: flex;
-  gap: 8px;
+  gap: 0.56vw;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
+
 export const Price = styled.li`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
@@ -146,21 +145,20 @@ export const PriceSpan = styled.span`
 
 export const InfoTeacher = styled.div`
   display: flex;
-  /* justify-content: flex-start; */
   flex-direction: column;
-  gap: 8px;
+  gap: 0.56vw;
 `;
 
 export const InfoSpan = styled.span`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
 
 export const Conditions = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   text-decoration: none;
   color: var(--color-text-fourth);
@@ -168,7 +166,7 @@ export const Conditions = styled.p`
 
 export const LessonInfo = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   text-decoration: none;
   color: var(--color-text-fourth);
@@ -176,7 +174,7 @@ export const LessonInfo = styled.p`
 
 export const Speaks = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   text-decoration: none;
   color: var(--color-text-fourth);
@@ -190,31 +188,28 @@ export const InfoSpanUnderline = styled.span`
 export const ReadMore = styled.button`
   text-align: left;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: var(--black);
-  width: 90px;
   background-color: transparent;
 `;
 
 export const LevelInfoList = styled.ul`
   display: flex;
-  gap: 8px;
-  margin-bottom: 32px;
+  gap: 0.56vw;
 `;
 
 export const LevelInfoItem = styled.li`
   display: flex;
-  border: 1px solid var(--color-text-second);
-  border-radius: 35px;
-  padding: 8px 12px;
-  height: 32px;
+  border: 0.07vw solid var(--color-text-second);
+  border-radius: 2.43vw;
+  padding: 0.56vw 0.83vw;
   transition: color 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.97vw;
   line-height: 1.14;
   color: var(--black);
 
@@ -224,20 +219,20 @@ export const LevelInfoItem = styled.li`
   }
 `;
 
+export const ShowMoreInfoContainer = styled.div``;
+
 export const Experience = styled.p`
-  margin-bottom: 32px;
+  margin-bottom: 2.22vw;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
+  font-size: 1.11vw;
+  line-height: 1.5;
   color: var(--black);
 `;
-
-export const ShowMoreInfoContainer = styled.div``;
 
 export const ReviewsList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2.22vw;
   padding: 0;
 `;
 
@@ -245,35 +240,35 @@ export const ReviewsItem = styled.li``;
 
 export const Reviewer = styled.h3`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--color-text-fourth);
 `;
 
 export const ReviewerRating = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.56vw;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.97vw;
   line-height: 1.29;
   color: var(--black);
 `;
 
 export const ReviewerText = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
 `;
 
 export const BookTrialLessonButton = styled.button`
-  border-radius: 12px;
-  padding: 16px 48px;
-  max-width: 232px;
-  height: 60px;
+  border-radius: 0.83vw;
+  padding: 1.11vw 3.33vw;
+  margin-top: 2.22vw;
+  max-width: 16.11vw;
   background: var(--gold);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.25vw;
   line-height: 1.56;
   color: var(--black);
 `;
@@ -282,7 +277,7 @@ export const TextContainer = styled.div``;
 
 export const Text = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.5;
   color: var(--black);
-`; 
+`;

@@ -9,7 +9,6 @@ export const Filter = styled.form`
 export const FilterLanguage = styled.div`
   display: flex;
   flex-direction: column;
-  /* max-width: 221px; */
 `;
 
 export const FilterLabel = styled.label`
@@ -29,7 +28,6 @@ export const LanguageInputContainer = styled.div`
 export const LanguageInput = styled.input`
   border-radius: 0.97vw;
   padding: 1.11vw 1.25vw;
-  /* max-width: 221px; */
   background: var(--white);
   font-weight: 500;
   font-size: 1.25vw;
@@ -41,7 +39,6 @@ export const LanguageInput = styled.input`
 export const FilterLevel = styled.div`
   display: flex;
   flex-direction: column;
-  /* max-width: 198px; */
 `;
 
 export const LevelInputContainer = styled.div`
@@ -53,7 +50,6 @@ export const LevelInputContainer = styled.div`
 export const LevelInput = styled.input`
   border-radius: 0.97vw;
   padding: 1.11vw 1.25vw;
-  /* max-width: 198px; */
   background: var(--white);
   font-weight: 500;
   font-size: 1.25vw;
@@ -65,7 +61,6 @@ export const LevelInput = styled.input`
 export const FilterPrice = styled.div`
   display: flex;
   flex-direction: column;
-  /* max-width: 124px; */
 `;
 
 export const PriceInputContainer = styled.div`

@@ -1,99 +1,39 @@
 import styled from "styled-components";
 
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 2.08vw;
+  background: var(--white);
+`;
+
 export const PopUpBookTrialLessonTitle = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: 1.39vw;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 2.78vw;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--black);
 `;
 
 export const PopUpBookTrialLessonText = styled.p`
-  margin-bottom: 20px;
+  margin-bottom: 1.39vw;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.37;
   color: var(--color-text-third);
 `;
 
 export const TeacherContainer = styled.div`
   display: flex;
-  gap: 14px;
-  margin-bottom: 40px;
-`;
-
-export const LessonTitle = styled.h3`
-  margin-bottom: 20px;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.33;
-  color: var(--black);
-`;
-
-export const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-`;
-
-export const StyledField = styled.input`
-  flex: 1;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.37;
-  color: var(--black);
-  outline: none;
-`;
-
-export const Label = styled.label`
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid var(--color-text-second);
-  border-radius: 12px;
-  padding: 16px 18px;
-`;
-
-export const ErrorMessageDiv = styled.div`
-  color: var(--toastify-color-error);
-  padding-left: 16px;
-`;
-
-export const RadioButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 40px;
-`;
-
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 40px;
-`;
-
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 30px;
-  background: var(--white);
-`;
-
-export const BookButton = styled.button`
-  border-radius: 12px;
-  padding: 16px;
-  background: var(--gold);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.56;
-  color: var(--black);
+  gap: 0.97vw;
+  margin-bottom: 2.78vw;
 `;
 
 export const AvatarImg = styled.img`
-  border-radius: 100px;
-  width: 44px;
-  height: 44px;
+  border-radius: 6.94vw;
+  width: 3.06vw;
+  height: 3.06vw;
 `;
 
 export const Teacher = styled.div`
@@ -101,11 +41,46 @@ export const Teacher = styled.div`
   flex-direction: column;
 `;
 
+export const TeacherText = styled.p`
+  font-weight: 500;
+  font-size: 0.83vw;
+  line-height: 1.33;
+  color: var(--color-text-fourth);
+`;
+
+export const TeacherTitle = styled.h4`
+  font-weight: 500;
+  font-size: 1.11vw;
+  line-height: 1.5;
+  color: var(--black);
+`;
+
+export const LessonTitle = styled.h3`
+  margin-bottom: 1.39vw;
+  font-weight: 500;
+  font-size: 1.67vw;
+  line-height: 1.33;
+  color: var(--black);
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2.78vw;
+`;
+
+export const RadioButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.11vw;
+  /* margin-bottom: 40px; */
+`;
+
 export const RadioLabel = styled.label`
   display: flex;
-  gap: 8px;
+  gap: 0.56vw;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.37;
   color: var(--black);
 `;
@@ -114,27 +89,52 @@ export const RadioInput = styled.input`
   display: none;
 `;
 
-export const FormInput = styled.input`
-  border: 1px solid var(--color-text-second);
-  border-radius: 12px;
-  padding: 16px;
+export const ErrorMessageDiv = styled.div`
+  color: var(--toastify-color-error);
+  padding-left: 2.22vw;
+  font-size: 1.11vw;
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  justify-content: space-between;
+  border: 0.07vw solid var(--color-text-second);
+  border-radius: 0.83vw;
+  padding: 1.11vw 1.25vw;
+`;
+
+export const StyledField = styled.input`
+  flex: 1;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.11vw;
   line-height: 1.37;
   color: var(--black);
   outline: none;
 `;
 
-export const TeacherText = styled.p`
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  color: var(--color-text-fourth);
-`;
-
-export const TeacherTitle = styled.h4`
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
+export const BookButton = styled.button`
+  border-radius: 0.83vw;
+  padding: 1.11vw;
+  background: var(--gold);
+  font-weight: 700;
+  font-size: 1.25vw;
+  line-height: 1.56;
   color: var(--black);
 `;
+
+// export const FormInput = styled.input`
+//   border: 1px solid var(--color-text-second);
+//   border-radius: 12px;
+//   padding: 16px;
+//   font-weight: 400;
+//   font-size: 16px;
+//   line-height: 1.37;
+//   color: var(--black);
+//   outline: none;
+// `;

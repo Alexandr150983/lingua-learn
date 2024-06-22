@@ -143,9 +143,6 @@ const PopUpBookTrialLesson = ({
             Culture, travel or hobby
           </RadioLabel>
         </RadioButtonContainer>
-        {errors.reason && (
-          <ErrorMessageDiv>{errors.reason.message}</ErrorMessageDiv>
-        )}
         <InputContainer>
           <Label htmlFor="fullName">
             <StyledField
@@ -153,30 +150,32 @@ const PopUpBookTrialLesson = ({
               {...register("fullName")}
               placeholder="Full Name"
             />
+            {errors.fullName && (
+              <ErrorMessageDiv>{errors.fullName.message}</ErrorMessageDiv>
+            )}
           </Label>
-          {errors.fullName && (
-            <ErrorMessageDiv>{errors.fullName.message}</ErrorMessageDiv>
-          )}
+
           <Label htmlFor="email">
             <StyledField
               type="text"
               {...register("email")}
               placeholder="Email"
             />
+            {errors.email && (
+              <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
+            )}
           </Label>
-          {errors.email && (
-            <ErrorMessageDiv>{errors.email.message}</ErrorMessageDiv>
-          )}
+
           <Label htmlFor="phoneNumber">
             <StyledField
               type="text"
               {...register("phoneNumber")}
               placeholder="Phone Number"
             />
+            {errors.phoneNumber && (
+              <ErrorMessageDiv>{errors.phoneNumber.message}</ErrorMessageDiv>
+            )}
           </Label>
-          {errors.phoneNumber && (
-            <ErrorMessageDiv>{errors.phoneNumber.message}</ErrorMessageDiv>
-          )}
         </InputContainer>
         <BookButton type="submit">Book</BookButton>
       </StyledForm>

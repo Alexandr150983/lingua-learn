@@ -19,8 +19,6 @@ export const LoadMoreButton = styled.button`
   padding: 1.11vw 3.33vw;
   margin: auto;
   margin-top: 4.44vw;
-  /* max-width: 183px;
-  max-height: 60px; */
   background: var(--gold);
   font-weight: 700;
   font-size: 1.25vw;
