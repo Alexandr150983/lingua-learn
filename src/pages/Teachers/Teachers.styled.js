@@ -9,8 +9,8 @@ export const TeachersContainer = styled.section`
 
 export const TeacherCardList = styled.ul`
   display: flex;
-  gap: 2.22vw;
   flex-direction: column;
+  gap: 2.22vw;
   padding: 0;
 `;
 

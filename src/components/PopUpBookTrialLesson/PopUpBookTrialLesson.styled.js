@@ -73,7 +73,6 @@ export const RadioButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.11vw;
-  /* margin-bottom: 40px; */
 `;
 
 export const RadioLabel = styled.label`
@@ -127,14 +126,3 @@ export const BookButton = styled.button`
   line-height: 1.56;
   color: var(--black);
 `;
-
-// export const FormInput = styled.input`
-//   border: 1px solid var(--color-text-second);
-//   border-radius: 12px;
-//   padding: 16px;
-//   font-weight: 400;
-//   font-size: 16px;
-//   line-height: 1.37;
-//   color: var(--black);
-//   outline: none;
-// `;

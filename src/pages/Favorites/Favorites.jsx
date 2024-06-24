@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFavorite } from "../../redux/Favorites/favoritesSlice";
-import TeacherItem from "components/TeacherItem/TeacherItem";
+import TeacherItem from "../../components/TeacherItem/TeacherItem";
 import {
   CenteredMessage,
   StyledFavorite,
