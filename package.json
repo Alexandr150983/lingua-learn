@@ -2,7 +2,6 @@
   "name": "lingua-learn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexandr150983.github.io/lingua-learn/",
   "dependencies": {
     "@firebase/auth": "^1.7.0",
     "@firebase/firestore": "^4.5.1",
