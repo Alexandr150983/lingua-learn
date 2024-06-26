@@ -1,66 +1,73 @@
-# Getting Started with Create React App
+# LearnLingo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LearnLingo is a web application for online language learning that allows users to find tutors based on various criteria, filter them, add them to favorites, and book trial lessons..
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [About the Project](#about-the-project)
+- [Core Technologies](#core-technologies)
+- [Layout](#layout)
+- [Technical Specification](#technical-specification)
+- [Deployment](#deployment)
 
-### `npm start`
+## About the Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+LearnLingo is designed for companies offering online language teaching services. The application consists of three main pages:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Home**: A page listing the company's advantages and includes a link to start using the application, redirecting to the "Teachers" page.
+- **Teachers**: A page listing tutors that users can filter by teaching language, students' knowledge level, and hourly rate.
+- **Favorites**: A private page with tutors added to favorites by the user.
 
-### `npm test`
+## Core Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: A JavaScript library for building user interfaces.
+- **Firebase**: A platform for mobile and web application development, used for user authentication and data storage.
+- **React Hook Form**: A library for managing forms in React.
+- **Yup**: A library for form validation.
+- **React Router**: A library for routing in React.
+- **CSS**: Styling the interface.
 
-### `npm run build`
+## Layout
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project's layout is developed using examples and prototypes to create a unique design. According to the layout, the "Home" and "Teachers" pages have a responsive design from 320px to 1440px, ensuring correct display on mobile and tablet devices.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technical Specification
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### General Requirements
 
-### `npm run eject`
+1. **Authentication**: Add the ability to register, log in, retrieve current user data, and log out using Firebase.
+2. **Forms**: Implement registration/login forms and trial lesson booking forms with minimal field validation using react-hook-form and yup.
+3. **Tutors Collection**: Create a tutors collection in Firebase Realtime Database with the following fields:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+name
+surname
+languages
+levels
+rating
+reviews
+price_per_hour
+lessons_done
+avatar_url
+lesson_info
+conditions
+experience
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Tutor Cards**: Implement displaying tutor cards on the "Teachers" page. Render 4 cards by default, with the option to load more cards by clicking the "Load more" button.
+5. **Adding to Favorites**: Implement the functionality to add tutors to favorites for authenticated users using localStorage or Firebase.
+6. **Filtering**: Add filtering functionality by teaching language, students' knowledge level, and hourly rate.
+7. **Detailed Information**: Implement displaying detailed information about the tutor and student reviews by clicking the "Read more" button.
+8. **Trial Lesson Booking**: Implement a modal window with a form for booking a trial lesson.
+9. **Private "Favorites" Page**: Implement a private page for viewing tutors added to favorites.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Completion Criteria
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Responsive, semantic, and valid design from 320px to 1440px.
+No errors in the browser console.
+Use native JS with a bundler (Vite, Parcel, etc.) or React.
+Interactivity works according to the technical specification.
+Formatted code without comments.
+The project is deployed on GitHub Pages, Netlify, or another hosting.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The project is deployed on [Vercel](https://www.vercel.com/) and is available at: [LearnLingo](https://your-project-name.vercel.app).
