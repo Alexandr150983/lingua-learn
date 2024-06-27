@@ -70,4 +70,4 @@ The project is deployed on GitHub Pages, Netlify, or another hosting.
 
 ## Deployment
 
-The project is deployed on [Vercel](https://www.vercel.com/) and is available at: [LearnLingo](https://your-project-name.vercel.app).
+The project is deployed on [Vercel](https://www.vercel.com/) and is available at: [LearnLingo](https://lingua-learn-tau.vercel.app/).

@@ -2,6 +2,7 @@
   "name": "lingua-learn",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alexandr150983.github.io/lingua-learn/",
   "dependencies": {
     "@firebase/auth": "^1.7.0",
     "@firebase/firestore": "^4.5.1",
@@ -27,7 +28,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:gh-pages": "npm run build",
+    "build": "BUILD_PATH=$(if [ $CI ]; then echo /; else echo /lingua-learn/; fi) react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
