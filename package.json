@@ -28,8 +28,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:gh-pages": "npm run build",
-    "build": "BUILD_PATH=$(if [ $CI ]; then echo /; else echo /lingua-learn/; fi) react-scripts build",
+    "build:gh-pages": "react-scripts build && gh-pages -d build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
