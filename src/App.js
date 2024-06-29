@@ -1,13 +1,9 @@
 import { Suspense, lazy } from "react";
-import Layout from "./components/Layout/Layout";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import {
-  FAVORITES_ROUTE,
-  HOME_ROUTE,
-  TEACHERS_ROUTE,
-} from "./constants/routes";
-import Loader from "components/Loader/Loader";
+import { Layout, Loader } from "components";
+
+import { FAVORITES_ROUTE, HOME_ROUTE, TEACHERS_ROUTE } from "constants/routes";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Teachers = lazy(() => import("./pages/Teachers/Teachers"));

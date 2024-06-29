@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+
+import Close from "assets/images/Icons/close.svg";
+
 import { Backdrop, CloseSvg, ModalContainer } from "./Modal.styled";
-import Close from "../../assets/images/Icons/close.svg";
 
 const Modal = ({ isOpen, onClose, children }) => {
   useEffect(() => {
-
     const handleEscapeKeyPress = (e) => {
       if (e.key === "Escape") onClose(false);
     };

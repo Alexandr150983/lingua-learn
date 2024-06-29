@@ -1,11 +1,9 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeUser } from "../../redux/Auth/authSlice";
 
-import {
-  FAVORITES_ROUTE,
-  HOME_ROUTE,
-  TEACHERS_ROUTE,
-} from "../../constants/routes";
+import loginIcon from "assets/images/Icons/log-in.svg";
+
+import { Logo, SignInForm, SignUpForm, Modal } from "components";
 
 import {
   AuthContainer,
@@ -17,12 +15,8 @@ import {
   RegisterButton,
   StyledHeader,
 } from "./Header.styled";
-import Logo from "./Logo/Logo";
-import loginIcon from "../../assets/images/Icons/log-in.svg";
-import SignInForm from "components/Auth/SignIn/SignIn";
-import Modal from "components/Modal/Modal";
-import { useState } from "react";
-import SignUpForm from "components/Auth/SignUp/SignUp";
+import { FAVORITES_ROUTE, HOME_ROUTE, TEACHERS_ROUTE } from "constants/routes";
+import { removeUser } from "../../redux/Auth/authSlice";
 import { selectIsAuth } from "../../redux/Auth/authSelector";
 import { clearFavorite } from "../../redux/Favorites/favoritesSlice";
 

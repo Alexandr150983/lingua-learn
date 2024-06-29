@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import chevronDown from "assets/images/Icons/chevron-down.svg";
+
 import {
   Filter,
   FilterLabel,
@@ -15,7 +19,6 @@ import {
   DropdownItem,
   ChevronIcon,
 } from "./FilterTeacher.styled";
-import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/Teachers/teachersSlice";
 import {
   selectTeachersFilter,
@@ -23,7 +26,6 @@ import {
   selectTeachersLevels,
   selectTeachersPrices,
 } from "../../redux/Teachers/teachersSelector";
-import chevronDown from "../../assets/images/Icons/chevron-down.svg";
 
 const FilterTeacher = () => {
   const dispatch = useDispatch();

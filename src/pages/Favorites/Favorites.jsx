@@ -1,13 +1,15 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFavorite } from "../../redux/Favorites/favoritesSlice";
-import TeacherItem from "../../components/TeacherItem/TeacherItem";
+
+import { TeacherItem } from "components";
+
 import {
   CenteredMessage,
   StyledFavorite,
   TeacherCardList,
   Title,
 } from "./Favorites.styled";
-import { useState } from "react";
+import { removeFavorite } from "../../redux/Favorites/favoritesSlice";
 import { selectFavorites } from "../../redux/Favorites/favoritesSelector";
 
 const FavoritesTeacher = () => {

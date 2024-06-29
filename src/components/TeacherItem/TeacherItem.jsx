@@ -1,4 +1,15 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
+import SvgStatusAvatar from "assets/images/Icons/status.svg";
+import BookOpen from "assets/images/Icons/book-open.svg";
+import PipeIcon from "assets/images/Icons/pipe.svg";
+import StarIcon from "assets/images/Icons/Star.svg";
+import HeartNormal from "assets/images/Icons/heart-normal.svg";
+import HeartActive from "assets/images/Icons/heart-active.svg";
+
+import { Modal, PopUpBookTrialLesson } from "components";
+
 import {
   Avatar,
   AvatarImg,
@@ -31,15 +42,6 @@ import {
   HeartIconNormal,
   Text,
   TextContainer,
-} from "./TeacherItem.styled";
-
-import SvgStatusAvatar from "../../assets/images/Icons/status.svg";
-import BookOpen from "../../assets/images/Icons/book-open.svg";
-import PipeIcon from "../../assets/images/Icons/pipe.svg";
-import StarIcon from "../../assets/images/Icons/Star.svg";
-import HeartNormal from "../../assets/images/Icons/heart-normal.svg";
-import HeartActive from "../../assets/images/Icons/heart-active.svg";
-import {
   Conditions,
   Experience,
   InfoSpan,
@@ -51,10 +53,7 @@ import {
   ReviewerText,
   TeacherItemContainer,
 } from "./TeacherItem.styled";
-import Modal from "../../components/Modal/Modal";
-import PopUpBookTrialLesson from "../../components/PopUpBookTrialLesson/PopUpBookTrialLesson";
 import { selectIsAuth } from "../../redux/Auth/authSelector";
-import { useSelector } from "react-redux";
 
 const TeacherItem = ({
   teacher,

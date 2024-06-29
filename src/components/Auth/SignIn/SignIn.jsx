@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
 import eyeOffSvg from "assets/images/Icons/eye-off.svg";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../../redux/Auth/authSlice";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import {
   ErrorMessageDiv,
@@ -17,7 +18,7 @@ import {
   Text,
   Title,
 } from "./SignIn.styled";
-import { useState } from "react";
+import { setUser } from "../../../redux/Auth/authSlice";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),

@@ -1,7 +1,9 @@
 import React from "react";
-import logoIcon from "../../../assets/images/logo-header.svg";
-import { HOME_ROUTE } from "../../../constants/routes";
+
+import logoIcon from "assets/images/logo-header.svg";
+
 import { LinkStyled, LogoContainer, LogoSvg, LogoText } from "./Logo.styled";
+import { HOME_ROUTE } from "constants/routes";
 
 const Logo = () => {
   return (

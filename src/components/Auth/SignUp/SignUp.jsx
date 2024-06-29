@@ -1,8 +1,11 @@
-import * as yup from "yup";
-import eyeOffSvg from "assets/images/Icons/eye-off.svg";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../../redux/Auth/authSlice";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import eyeOffSvg from "assets/images/Icons/eye-off.svg";
 
 import {
   ErrorMessageDiv,
@@ -15,9 +18,7 @@ import {
   Text,
   Title,
 } from "./SignUp.styled";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { setUser } from "../../../redux/Auth/authSlice";
 
 const schema = yup.object().shape({
   name: yup.string().required("Required"),

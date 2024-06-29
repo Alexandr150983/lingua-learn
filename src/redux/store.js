@@ -1,5 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 import favoritesReducer from "./Favorites/favoritesSlice";
 import authReducer from "./Auth/authSlice";
 import { teachersReducer } from "./Teachers/teachersSlice";

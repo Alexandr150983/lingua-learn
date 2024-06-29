@@ -1,6 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+import RadioCheckSelected from "assets/images/Icons/RadioButtonCheck.svg";
+import RadioCheckUnselected from "assets/images/Icons/RadioButton.svg";
+
+import { RadioButton } from "components";
+
 import {
   AvatarImg,
   BookButton,
@@ -21,9 +27,6 @@ import {
   TeacherText,
   TeacherTitle,
 } from "./PopUpBookTrialLesson.styled";
-import RadioCheckSelected from "../../assets/images/Icons/RadioButtonCheck.svg";
-import RadioCheckUnselected from "../../assets/images/Icons/RadioButton.svg";
-import RadioButton from "../RadioButton/RadioButton";
 
 const schema = yup.object().shape({
   fullName: yup.string().required("Required"),

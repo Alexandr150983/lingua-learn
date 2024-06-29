@@ -1,5 +1,5 @@
-import Header from "../Header/Header";
 import { StyledLayout } from "./Layout.styled";
+import { Header } from "components";
 
 const Layout = ({ children }) => {
   return (

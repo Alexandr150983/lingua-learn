@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+
+import homeImg from "assets/images/Home/block-pictur.png";
+
 import {
   Advantages,
   GetStart,
@@ -13,9 +17,7 @@ import {
   Tutors,
   Wrapper,
 } from "./Home.styled";
-import homeImg from "../../assets/images/Home/block-pictur.png";
-import { Link } from "react-router-dom";
-import { TEACHERS_ROUTE } from "../../constants/routes";
+import { TEACHERS_ROUTE } from "constants/routes";
 
 const Home = () => {
   return (

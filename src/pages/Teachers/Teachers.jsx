@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import { Loader, ErrorMessage, TeacherItem, FilterTeacher } from "components";
+
 import {
   TeachersContainer,
   TeacherCardList,
   LoadMoreButton,
 } from "./Teachers.styled";
-import TeacherItem from "../../components/TeacherItem/TeacherItem";
-import Loader from "../../components/Loader/Loader";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import {
   addFavorite,
   removeFavorite,
 } from "../../redux/Favorites/favoritesSlice";
-import { requestTeachers } from "../../redux/Teachers/teachersSlice";
 import {
   selectTeachersData,
   selectTeachersError,
   selectTeachersFilter,
   selectTeachersIsLoading,
 } from "../../redux/Teachers/teachersSelector";
-import FilterTeacher from "../../components/FilterTeacher/FilterTeacher";
+import { requestTeachers } from "../../redux/Teachers/teachersSlice";
 import { selectFavorites } from "../../redux/Favorites/favoritesSelector";
 
 const Teachers = () => {
   const [visibleCards, setVisibleCards] = useState(4);
   const [showMoreInfo, setShowMoreInfo] = useState({});
   const dispatch = useDispatch();
-
   const teachersData = useSelector(selectTeachersData);
   const isLoading = useSelector(selectTeachersIsLoading);
   const error = useSelector(selectTeachersError);
@@ -45,11 +43,13 @@ const Teachers = () => {
       teacher.languages.some((lang) =>
         lang.toLowerCase().includes(language.toLowerCase())
       );
+
     const matchesLevel =
       !level ||
       teacher.levels.some((lvl) =>
         lvl.toLowerCase().includes(level.toLowerCase())
       );
+
     const matchesPrice = !price || teacher.price_per_hour <= parseFloat(price);
 
     return matchesLanguage && matchesLevel && matchesPrice;
