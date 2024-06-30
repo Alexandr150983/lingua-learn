@@ -21,12 +21,10 @@ export const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 90vh;
   transform: translate(-50%, -50%);
   padding: 4.44vw;
   border-radius: 2.08vw;
-  scrollbar-width: none;
-  overflow: auto;
   background-color: var(--white);
 `;
 
@@ -37,4 +35,13 @@ export const CloseSvg = styled.img`
   width: 2.22vw;
   height: 2.22vw;
   cursor: pointer;
+  z-index: 1001;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  overflow-y: auto;
+  max-height: 90vh;
 `;

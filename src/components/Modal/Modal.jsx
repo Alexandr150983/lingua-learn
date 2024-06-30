@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import Close from "assets/images/Icons/close.svg";
 
-import { Backdrop, CloseSvg, ModalContainer } from "./Modal.styled";
+import { Backdrop, CloseSvg, Content, ModalContainer } from "./Modal.styled";
 
 const Modal = ({ isOpen, onClose, children }) => {
   useEffect(() => {
@@ -30,13 +30,13 @@ const Modal = ({ isOpen, onClose, children }) => {
   return (
     <Backdrop onClick={() => onClose(false)}>
       <ModalContainer onClick={stopPropagation}>
-        {children}
         <CloseSvg
           type="button"
           src={Close}
           alt="Close button"
           onClick={() => onClose(false)}
         />
+        <Content>{children}</Content>
       </ModalContainer>
     </Backdrop>
   );
